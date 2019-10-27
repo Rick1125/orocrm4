@@ -22,8 +22,7 @@ services:
                 - "./var:/var/www/html/var"
                 - "./logs/supervisor:/var/log/supervisor"
     mysql:
-        image: mysql
-        #image: mysql:5.7.21
+        image: mysql:5.7.21
         environment:
                 - MYSQL_DATABASE=${PROJECT}
                 - MYSQL_USER=${PROJECT}
