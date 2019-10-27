@@ -1,0 +1,37 @@
+version: '3.5'
+services:
+    nginx:
+         image: nginx
+         ports:
+             - 8889:80
+         volumes:
+             - "./docker/nginx:/etc/nginx/conf.d"
+             - "./docker/nginx/ssl:/etc/nginx/ssl"
+             - "./html/public:/var/www/html/public"
+             - "./logs/nginx:/var/log/nginx"
+    php:
+        image: shu300/oro-crm4
+        #command: /bin/bash
+        stdin_open: true
+        tty: true
+        volumes:
+                - "./docker/php/auth.json:/root/.composer/auth.json"
+                - "./docker/php/supervisor/conf.d:/etc/supervisor/conf.d"
+                - "./html/public:/var/www/html/public"
+                - "./html/parameters.yml:/var/www/html/config/parameters.yml"
+                - "./var:/var/www/html/var"
+                - "./logs/supervisor:/var/log/supervisor"
+    mysql:
+        image: mysql
+        #image: mysql:5.7.21
+        environment:
+                - MYSQL_DATABASE=${PROJECT}
+                - MYSQL_USER=${PROJECT}
+                - MYSQL_PASSWORD=${PROJECT}
+                - MYSQL_ROOT_PASSWORD=admin
+                - LANG=C.UTF-8
+        restart: always
+        volumes:
+                - "./data/mysql:/var/lib/mysql"
+                - "./logs/mysql:/var/log/mysql"
+                - "./docker/mysql/mysql.conf.d:/etc/mysql/mysql.conf.d"
