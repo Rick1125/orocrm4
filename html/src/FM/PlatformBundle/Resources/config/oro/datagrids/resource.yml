@@ -1,0 +1,165 @@
+datagrids:
+    fm-resource-grid:
+        extended_entity_name: '%fm.resource.entity.class%'
+        acl_resource: fm_resource_view
+        inline_editing:
+            enable: true
+        source:
+            type: orm
+            query:
+                select:
+                    - r
+                    - c.name as channelName
+                    - c.person as person
+                    - p.name as platformName
+                from:
+                    - { table: '%fm.resource.entity.class%', alias: r }
+                join:
+                    left:
+                        - { join: r.channel, alias: c }
+                        - { join: r.platform, alias: p }
+        columns:
+            name:
+                label:         'Name'
+            status:
+                label:         'Status'
+                type:          twig
+                frontend_type: html
+                template:      'FMPlatformBundle::Datagrid/Property/status_badge.html.twig'
+            link:
+                label:         'Link'
+            nickname:
+                label:         'Contact Name'
+            person:
+                label:         "Personal KOL"
+                type:          twig
+                frontend_type: html
+                template:      FMPlatformBundle::Datagrid/Property/person.html.twig
+            channelName:
+                label:         'Channel'
+            platformName:
+                label:         'Platform'
+            follower:
+                label:         'Followers(Ten-Thousand)'
+            quoteDirect:
+                label:         'Quote Direct'
+                frontend_type: currency
+            quoteRepost:
+                label:         'Quote Repost'
+                frontend_type: currency
+            createdAt:
+                label:         'Created At'
+                frontend_type: datetime
+            updatedAt:
+                label:         'Updated At'
+                frontend_type: datetime
+        fields_acl:
+            columns:
+                costDirect:
+                    data_name: r.costDirect
+                costRepost:
+                    data_name: r.costRepost
+        sorters:
+            columns:
+                name:
+                    data_name: r.name
+                follower:
+                    data_name: r.follower
+                quoteDirect:
+                    data_name: r.quoteDirect
+                quoteRepost:
+                    data_name: r.quoteRepost
+                createdAt:
+                    data_name: r.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                name:
+                    type: string
+                    data_name: r.name
+                status:
+                    type: single_choice
+                    data_name: r.status
+                    options:
+                        field_options:
+                            choices:
+                                'enabled': 'Enabled'
+                                'disabled': 'Disabled'
+                link:
+                    type: string
+                    data_name: r.link
+                quoteDirect:
+                    type: number-range
+                    data_name: r.quoteDirect
+                quoteRepost:
+                    type: number-range
+                    data_name: r.quoteRepost
+                person:
+                    type: single_choice
+                    data_name: c.person
+                    options:
+                        field_options:
+                            choices:
+                                'Yes': true
+                                'No': false
+                platformName:
+                    type: entity
+                    data_name: r.platform
+                    options:
+                        field_options:
+                            class: FMPlatformBundle:Platform
+                            translatable_options: false
+                            multiple: true
+                channelName:
+                    type: entity
+                    data_name: r.channel
+                    options:
+                        field_options:
+                            class: FMPlatformBundle:Channel
+                            translatable_options: false
+                            multiple: true
+                createdAt:
+                    type: date
+                    data_name: p.createdAt
+        options:
+            export: true
+            entity_pagination: true
+
+        properties:
+            id: ~
+            view_link:
+                type:       url
+                route:      fm_resource_view
+                params:
+                    - id
+            update_link:
+                type:       url
+                route:      fm_resource_update
+                params:
+                    - id
+            delete_link:
+                type:       url
+                route:      fm_api_delete_resource
+                params:
+                    - id
+        actions:
+            view:
+                type:          navigate
+                acl_resource:  fm_resource_view
+                label:         oro.grid.action.view
+                icon:          eye
+                link:          view_link
+                rowAction:     true
+            update:
+                type:          navigate
+                acl_resource:  fm_resource_update
+                label:         oro.grid.action.update
+                icon:          pencil-square-o
+                link:          update_link
+            delete:
+                type:          delete
+                label:         oro.grid.action.delete
+                link:          delete_link
+                icon:          trash-o
+                acl_resource:  fm_resource_update

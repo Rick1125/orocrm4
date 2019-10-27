@@ -1,0 +1,43 @@
+datagrids:
+    fm-result-grid:
+        extended_entity_name: '%fm.result.entity.class%'
+        acl_resource: fm_resource_view
+        inline_editing:
+            enable: true
+        source:
+            type: orm
+            query:
+                select:
+                    - r
+                from:
+                    - { table: '%fm.result.entity.class%', alias: r }
+        columns:
+            id:
+                label:         ID
+            link:
+                label:         Link
+            createdAt:
+                label:         'Created At'
+                frontend_type: datetime
+            updatedAt:
+                label:         'Updated At'
+                frontend_type: datetime
+        sorters:
+            columns:
+                link:
+                    data_name: r.link
+                createdAt:
+                    data_name: r.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                link:
+                    type: string
+                    data_name: r.link
+                createdAt:
+                    type: date
+                    data_name: r.createdAt
+        options:
+            export: true
+            entity_pagination: true

@@ -1,0 +1,5 @@
+{% set status = record.getValue('status') %}
+
+<span class="label label-{% if (status == 'enabled') %}success{% elseif status == 'disabled' %}danger{% elseif status == 'paused' %}warning{% else %}info{% endif %}">
+    {{ status|capitalize }}
+</span>

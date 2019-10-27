@@ -1,0 +1,45 @@
+datagrids:
+    fm-platform-grid:
+        extended_entity_name: '%fm.platform.entity.class%'
+        acl_resource: fm_resource_view
+        inline_editing:
+            enable: true
+        source:
+            type: orm
+            query:
+                select:
+                    - p
+                from:
+                    - { table: '%fm.platform.entity.class%', alias: p }
+        columns:
+            id:
+                label:         ID
+            name:
+                label:         Name
+            matchRule:
+                label:         'Match Rule'
+            createdAt:
+                label:         'Created At'
+                frontend_type: datetime
+            updatedAt:
+                label:         'Updated At'
+                frontend_type: datetime
+        sorters:
+            columns:
+                name:
+                    data_name: p.name
+                createdAt:
+                    data_name: p.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                name:
+                    type: string
+                    data_name: p.name
+                createdAt:
+                    type: date
+                    data_name: p.createdAt
+        options:
+            export: true
+            entity_pagination: true

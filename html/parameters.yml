@@ -24,10 +24,9 @@ parameters:
     websocket_backend_ssl_context_options: {  }
     web_backend_prefix: ''
     session_handler: session.handler.pdo
-    locale: en
     secret: ebf162e79086ee889fb45794db266d62
-    installed: null
-    assets_version: 40cbc5b0
+    installed: '2019-10-27T19:36:49+08:00'
+    assets_version: 999d1458
     assets_version_strategy: time_hash
     message_queue_transport: dbal
     message_queue_transport_config: null

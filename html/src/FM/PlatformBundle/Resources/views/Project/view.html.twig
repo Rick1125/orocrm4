@@ -1,0 +1,64 @@
+{% extends 'OroUIBundle:actions:view.html.twig' %}
+{% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
+
+{% set hasGrantedNameView = is_granted('VIEW', entity, 'name') %}
+{% set gridName = 'project-resources-grid' %}
+
+{% oro_title_set({params : {"%project.name%": hasGrantedNameView
+    ? entity.name|default('N/A')
+    : 'view %fieldName% not granted'|trans({'%fieldName%': 'project name'}) }})
+%}
+
+{% block navButtons %}
+    {% if is_granted('EDIT', entity) %}
+        {{ UI.editButton({
+            'path': path('fm_project_update', {'id': entity.id}),
+            'entity_label': 'Project'
+        }) }}
+    {% endif %}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+        'entity': entity,
+        'indexPath': path('fm_project_index'),
+        'indexLabel': 'Projects',
+        'rawEntityTitle': not hasGrantedNameView,
+        'entityTitle': hasGrantedNameView
+        ? entity.name|default('N/A')
+        : UI.renderDisabledLabel('view %fieldName% not granted'|trans({'%fieldName%': 'project name'}))
+    } %}
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {% set projectInformationWidget %}
+        {{ oro_widget_render({
+            'widgetType': 'block',
+            'title': 'Project Information',
+            'url': path('fm_project_widget_info', {id: entity.id})
+        }) }}
+    {% endset %}
+
+    {% set dataBlocks = [{
+        'title': 'General',
+        'class': 'active',
+        'subblocks': [
+            {'data' : [projectInformationWidget] },
+        ]
+    }] %}
+
+    {% set dataBlocks = dataBlocks|merge([{
+        'title' : 'Resources',
+        'subblocks': [{
+            'title' : null,
+            'useSpan': false,
+            'data' : [dataGrid.renderGrid(gridName, {project_id: entity.id}, { cssClass: 'inner-grid' })]
+        }]
+    }] ) %}
+
+    {% set id = 'fm-project-view' %}
+    {% set data = {'dataBlocks': dataBlocks} %}
+
+    {{ parent() }}
+{% endblock content_data %}

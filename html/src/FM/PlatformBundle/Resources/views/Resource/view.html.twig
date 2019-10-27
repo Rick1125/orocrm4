@@ -1,0 +1,56 @@
+{% extends 'OroUIBundle:actions:view.html.twig' %}
+{% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
+
+{% set hasGrantedNameView = is_granted('VIEW', entity, 'name') %}
+
+{% oro_title_set({params : {"%resource.name%": hasGrantedNameView
+    ? entity.name|default('N/A')
+    : 'view %fieldName% not granted'|trans({'%fieldName%': 'Resource'}) }})
+%}
+
+{% block navButtons %}
+    {% if is_granted('EDIT', entity) %}
+        {{ UI.editButton({
+            'path': path('fm_resource_update', {'id': entity.id}),
+            'entity_label': 'Resource'
+        }) }}
+    {% endif %}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+        'entity': entity,
+        'indexPath': path('fm_resource_index'),
+        'indexLabel': 'Resources',
+        'rawEntityTitle': not hasGrantedNameView,
+        'entityTitle': hasGrantedNameView
+        ? entity.name|default('N/A')
+        : UI.renderDisabledLabel('view %fieldName% not granted'|trans({'%fieldName%': 'Resource'}))
+    } %}
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {% set resourceInformationWidget %}
+        {{ oro_widget_render({
+            'widgetType': 'block',
+            'title': 'Resource Information',
+            'url': path('fm_resource_widget_info', {id: entity.id})
+        }) }}
+    {% endset %}
+
+    {% set dataBlocks = [
+        {
+            'title': 'Resource',
+            'class': 'active',
+            'subblocks': [
+                {'data' : [resourceInformationWidget] },
+            ]
+        }
+    ] %}
+
+    {% set id = 'fm-resource-view' %}
+    {% set data = {'dataBlocks': dataBlocks} %}
+
+    {{ parent() }}
+{% endblock content_data %}

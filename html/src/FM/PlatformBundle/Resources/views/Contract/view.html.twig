@@ -1,0 +1,64 @@
+{% extends 'OroUIBundle:actions:view.html.twig' %}
+{% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
+
+{% set hasGrantedNameView = is_granted('VIEW', entity, 'name') %}
+{% set gridName = 'contract-projects-grid' %}
+
+{% oro_title_set({params : {"%contract.name%": hasGrantedNameView
+    ? entity.name|default('N/A')
+    : 'view %fieldName% not granted'|trans({'%fieldName%': 'contract name'}) }})
+%}
+
+{% block navButtons %}
+    {% if is_granted('EDIT', entity) %}
+        {{ UI.editButton({
+            'path': path('fm_contract_update', {'id': entity.id}),
+            'entity_label': 'Contract'
+        }) }}
+    {% endif %}
+{% endblock navButtons %}
+
+{% block pageHeader %}
+    {% set breadcrumbs = {
+        'entity': entity,
+        'indexPath': path('fm_contract_index'),
+        'indexLabel': 'Contracts',
+        'rawEntityTitle': not hasGrantedNameView,
+        'entityTitle': hasGrantedNameView
+        ? entity.name|default('N/A')
+        : UI.renderDisabledLabel('view %fieldName% not granted'|trans({'%fieldName%': 'contract name'}))
+    } %}
+    {{ parent() }}
+{% endblock pageHeader %}
+
+{% block content_data %}
+    {% set contractInformationWidget %}
+        {{ oro_widget_render({
+            'widgetType': 'block',
+            'title': 'Contract Information',
+            'url': path('fm_contract_widget_info', {id: entity.id})
+        }) }}
+    {% endset %}
+
+    {% set dataBlocks = [{
+        'title': 'General',
+        'class': 'active',
+        'subblocks': [
+            {'data' : [contractInformationWidget] },
+        ]
+    }] %}
+
+    {% set dataBlocks = dataBlocks|merge([{
+        'title' : 'Projects',
+        'subblocks': [{
+            'title' : null,
+            'useSpan': false,
+            'data' : [dataGrid.renderGrid(gridName, {contract_id: entity.id}, { cssClass: 'inner-grid' })]
+        }]
+    }] ) %}
+
+    {% set id = 'fm-contract-view' %}
+    {% set data = {'dataBlocks': dataBlocks} %}
+
+    {{ parent() }}
+{% endblock content_data %}

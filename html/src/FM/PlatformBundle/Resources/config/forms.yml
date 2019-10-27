@@ -1,0 +1,51 @@
+parameters:
+  fm.contract.entity.class: 'FM\PlatformBundle\Entity\Contract'
+  fm.platform.entity.class: 'FM\PlatformBundle\Entity\Platform'
+  fm.project.entity.class:  'FM\PlatformBundle\Entity\Project'
+  fm.channel.entity.class:  'FM\PlatformBundle\Entity\Channel'
+  fm.result.entity.class:   'FM\PlatformBundle\Entity\Result'
+  fm.resource.entity.class: 'FM\PlatformBundle\Entity\Resource'
+
+services:
+  fm.form.handler:
+    class: 'FM\PlatformBundle\Form\Handler\FormHandler'
+    arguments:
+      - "@doctrine.orm.entity_manager"
+    tags:
+      - { name: oro_form.form.handler, alias: fm_form_handler }
+
+  ### Project Form and Type
+  fm.form.project:
+    class: 'Symfony\Component\Form\Form'
+    factory: ["@form.factory", "createNamed"]
+    arguments: ["project_form", 'FM\PlatformBundle\Form\Type\ProjectType', null]
+
+  ### Contract Form and Type
+  fm.form.contract:
+    class: 'Symfony\Component\Form\Form'
+    factory: ["@form.factory", "createNamed"]
+    arguments: ["contract_form", 'FM\PlatformBundle\Form\Type\ContractType', null]
+
+  ### Resource Form
+  fm.form.resource:
+    class: 'Symfony\Component\Form\Form'
+    factory: ["@form.factory", "createNamed"]
+    arguments: ["resource_form", 'FM\PlatformBundle\Form\Type\ResourceType', null]
+
+  ### Channel Form
+  fm.form.channel:
+    class: 'Symfony\Component\Form\Form'
+    factory: ["@form.factory", "createNamed"]
+    arguments: ["channel_form", 'FM\PlatformBundle\Form\Type\ChannelType', null]
+
+  ### Result Form
+  fm.form.result:
+    class: 'Symfony\Component\Form\Form'
+    factory: ["@form.factory", "createNamed"]
+    arguments: ["result_form", 'FM\PlatformBundle\Form\Type\ResultType', null]
+
+  ### Platform Form
+  fm.form.platform:
+    class: 'Symfony\Component\Form\Form'
+    factory: ["@form.factory", "createNamed"]
+    arguments: ["platform_form", 'FM\PlatformBundle\Form\Type\PlatformType', null]

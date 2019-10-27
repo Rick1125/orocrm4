@@ -1,0 +1,54 @@
+navigation:
+    menu_config:
+        items:
+            fm_project_tab:
+                label: 'Project'
+                uri:   '#'
+                extras:
+                    position: 10
+            fm_contract_tab:
+                label: 'Contract'
+                uri:   '#'
+                extras:
+                    position: 20
+            fm_resource_tab:
+                label: 'Resource'
+                uri:   '#'
+                extras:
+                    position: 30
+            resource_link:
+                label: 'Resources'
+                route: fm_resource_index
+            contract_link:
+                label: 'Contracts'
+                route: fm_contract_index
+            project_link:
+                label: 'Projects'
+                route: fm_project_index
+            channel_link:
+                label: 'Channels'
+                route: fm_channel_index
+            platform_link:
+                label: 'Platforms'
+                route: fm_platform_index
+        tree:
+            application_menu:
+                children:
+                    fm_project_tab:
+                        children:
+                            project_link: ~
+                    fm_contract_tab:
+                        children:
+                            contract_link: ~
+                    fm_resource_tab:
+                        children:
+                            resource_link: ~
+                            channel_link: ~
+                            platform_link: ~
+
+    titles:
+        contract_link: 'Contracts'
+        resource_link: 'KOL Lists'
+        project_link: 'Projects'
+        platform_link: 'Platforms'
+        channel_link: 'Channel Lists'

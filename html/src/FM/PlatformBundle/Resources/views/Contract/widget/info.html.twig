@@ -1,0 +1,24 @@
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% import 'OroEntityConfigBundle::macros.html.twig' as entityConfig %}
+
+<div class="widget-content">
+    <div class="row-fluid form-horizontal">
+        {% if is_granted('VIEW', contract, 'name') %}
+            <div class="responsive-block">
+                {{ UI.renderProperty('Name', contract.name) }}
+                {{ UI.renderProperty('Assigned To', contract.assignedTo.username) }}
+                {{ UI.renderProperty('Status', contract.status|capitalize) }}
+                {{ UI.renderProperty('Amount', contract.amount|oro_format_number('currency')) }}
+            </div>
+            <div class="responsive-block">
+                {{ UI.renderProperty('Launched At', contract.launchedAt|date) }}
+                {{ UI.renderProperty('Expired At', contract.expiredAt|date) }}
+                {{ UI.renderHtmlProperty('Description', contract.description) }}
+            </div>
+        {% endif %}
+
+        <div class="responsive-block">
+            {{ entityConfig.renderDynamicFields(contract) }}
+        </div>
+    </div>
+</div>

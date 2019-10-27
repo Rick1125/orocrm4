@@ -1,0 +1,198 @@
+datagrids:
+    fm-contract-grid:
+        extended_entity_name: '%fm.contract.entity.class%'
+        acl_resource: fm_contract_view
+        inline_editing:
+            enable: true
+        source:
+            type: orm
+            query:
+                select:
+                    - c
+                from:
+                    - { table: '%fm.contract.entity.class%', alias: c }
+        columns:
+            id:
+                label:         ID
+            name:
+                label:         Name
+            status:
+                label:         Status
+                type:          twig
+                frontend_type: html
+                template:      FMPlatformBundle::Datagrid/Property/status_badge.html.twig
+            amount:
+                label:         'Amount'
+                frontend_type: currency
+            createdAt:
+                label:         'Created At'
+                frontend_type: datetime
+            updatedAt:
+                label:         'Updated At'
+                frontend_type: datetime
+        sorters:
+            columns:
+                name:
+                    data_name: c.name
+                status:
+                    data_name: c.status
+                createdAt:
+                    data_name: c.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                name:
+                    type: string
+                    data_name: c.name
+                status:
+                    type: single_choice
+                    data_name: c.status
+                    options:
+                        field_options:
+                            choices:
+                                'enabled': 'Enabled'
+                                'disabled': 'Disabled'
+                createdAt:
+                    type: date
+                    data_name: c.createdAt
+        options:
+            export: true
+            entity_pagination: true
+
+        properties:
+            id: ~
+            view_link:
+                type:       url
+                route:      fm_contract_view
+                params:
+                    - id
+            update_link:
+                type:       url
+                route:      fm_contract_update
+                params:
+                    - id
+        actions:
+            view:
+                type:          navigate
+                acl_resource:  fm_contract_view
+                label:         oro.grid.action.view
+                icon:          eye
+                link:          view_link
+                rowAction:     true
+            update:
+                type:          navigate
+                acl_resource:  fm_contract_update
+                label:         oro.grid.action.update
+                icon:          pencil-square-o
+                link:          update_link
+
+    contract-relation-grid:
+        source:
+            type: orm
+            query:
+                select:
+                    - p
+                from:
+                    - { table: '%fm.project.entity.class%', alias: p }
+
+        columns: []
+
+        properties:
+            id: ~
+
+        sorters:
+            columns:
+                name:
+                    data_name: p.name
+                amount:
+                    data_name: p.amount
+                quote:
+                    data_name: p.quote
+        disable_default_sorting: true
+
+        filters: []
+
+    contract-projects-grid:
+        extends: contract-relation-grid
+        source:
+            query:
+                select:
+                    - >
+                      (CASE WHEN (:contract_id IS NOT NULL) THEN
+                        CASE WHEN p.id IN (:data_in) AND p.id NOT IN (:data_not_in)
+                        THEN true ELSE false END
+                      ELSE
+                        CASE WHEN p.id IN (:data_in) AND p.id NOT IN (:data_not_in)
+                        THEN true ELSE false END
+                      END) as assign_to_contract
+            bind_parameters:
+                -
+                    name: contract_id
+                    default: null
+        columns:
+            assign_to_contract:
+                label: 'Assigned to Contract'
+                editable: true
+                frontend_type: boolean
+            name:
+                label: 'Name'
+            status:
+                label: oro.user.enabled.label
+                frontend_type: select
+                choices:
+                   disabled: Disabled
+                   enabled: Enabled
+            amount:
+                label: 'Amount'
+                frontend_type: currency
+            quote:
+                label: 'Quote'
+                frontend_type: currency
+            launchedAt:
+                label: 'Launched At'
+                frontend_type: datetime
+            expiredAt:
+                label: 'Expired At'
+                frontend_type: datetime
+        filters:
+            columns:
+                assign_to_contract:
+                    type: boolean
+                    data_name: assign_to_contract
+                mame:
+                    type: string
+                    data_name: p.name
+                status:
+                    type: boolean
+                    data_name: p.status
+                    options:
+                        field_options:
+                            choices:
+                                disabled: Disabled
+                                enabled: Enabled
+                amount:
+                    type: number
+                    data_name: p.amount
+                quote:
+                    type: number
+                    data_name: p.quote
+                launchedAt:
+                    type: datetime
+                    data_name: p.launchedAt
+        sorters:
+            multiple_sorting: true
+            columns:
+                assign_to_contract:
+                    data_name: assign_to_contract
+            default:
+                assign_to_contract: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_DESC'
+                name: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
+
+        options:
+            rowSelection:
+                dataField: id
+                columnName: assign_to_contract
+                selectors:
+                    included: '#contractAppendProjects'
+                    excluded: '#contractRemoveProjects'

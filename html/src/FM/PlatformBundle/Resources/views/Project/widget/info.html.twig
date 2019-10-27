@@ -1,0 +1,25 @@
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% import 'OroEntityConfigBundle::macros.html.twig' as entityConfig %}
+
+<div class="widget-content">
+    <div class="row-fluid form-horizontal">
+        {% if is_granted('VIEW', project, 'name') %}
+            <div class="responsive-block">
+                {{ UI.renderProperty('Name', project.name) }}
+                {{ UI.renderProperty('Assigned To', project.assignedTo.username) }}
+                {{ UI.renderProperty('Status', project.status|capitalize) }}
+                {{ UI.renderProperty('Quote', project.quote|oro_format_number('currency')) }}
+                {{ UI.renderProperty('Budget', project.budget|oro_format_number('currency')) }}
+            </div>
+            <div class="responsive-block">
+                {{ UI.renderProperty('Launched At', project.launchedAt|date) }}
+                {{ UI.renderProperty('Expired At', project.expiredAt|date) }}
+                {{ UI.renderHtmlProperty('Description', project.description) }}
+            </div>
+        {% endif %}
+
+        <div class="responsive-block">
+            {{ entityConfig.renderDynamicFields(project) }}
+        </div>
+    </div>
+</div>

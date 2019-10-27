@@ -1,0 +1,7 @@
+imports:
+    - { resource: datagrids/contract.yml }
+    - { resource: datagrids/project.yml }
+    - { resource: datagrids/resource.yml }
+    - { resource: datagrids/channel.yml }
+    - { resource: datagrids/platform.yml }
+    - { resource: datagrids/result.yml }

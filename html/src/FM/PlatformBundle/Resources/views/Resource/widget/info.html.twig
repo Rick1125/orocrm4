@@ -1,0 +1,38 @@
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% import 'OroEntityConfigBundle::macros.html.twig' as entityConfig %}
+
+<div class="widget-content">
+    <div class="row-fluid form-horizontal">
+        {% if is_granted('VIEW', resource, 'name') %}
+            <div class="responsive-block">
+                {{ UI.renderProperty('Name', resource.name) }}
+                {{ UI.renderProperty('Contact Name', resource.nickname) }}
+                {{ UI.renderHtmlProperty('Link', '<a href="'~resource.link~'" target="_blank">' ~ resource.link ~ '</a>') }}
+                {{ UI.renderProperty('Channel', resource.channel.name) }}
+                {{ UI.renderProperty('Personal', resource.channel.person ? 'Yes' : 'No') }}
+                {{ UI.renderProperty('Platform', resource.platform.name) }}
+                {{ UI.renderProperty('Followers(Ten-Thousand)', resource.follower) }}
+                {{ UI.renderProperty('Quote Direct', resource.quoteDirect|oro_format_number('currency')) }}
+                {{ UI.renderProperty('Quote Repost', resource.quoteRepost|oro_format_number('currency')) }}
+                {% if is_granted('VIEW', resource, 'costDirect') %}
+                {{ UI.renderProperty('Cost Direct', resource.costDirect|oro_format_number('currency')) }}
+                {% endif %}
+                {% if is_granted('VIEW', resource, 'costRepost') %}
+                  {{ UI.renderProperty('Cost Repost', resource.costRepost|oro_format_number('currency')) }}
+                {% endif %}
+                {% if is_granted('VIEW', resource, 'discount') %}
+                {{ UI.renderProperty('Discount', resource.discount|oro_format_number('percent')) }}
+                {% endif %}
+            </div>
+            <div class="responsive-block">
+                {{ UI.renderProperty('Created At', resource.createdAt|date) }}
+                {{ UI.renderProperty('Updated At', resource.createdAt|date) }}
+                {{ UI.renderHtmlProperty('Memo', resource.memo) }}
+            </div>
+        {% endif %}
+
+        <div class="responsive-block">
+            {{ entityConfig.renderDynamicFields(resource) }}
+        </div>
+    </div>
+</div>

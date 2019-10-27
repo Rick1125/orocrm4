@@ -1,0 +1,5 @@
+{% set person = record.getValue('person') %}
+
+<span class="label label-{% if person is empty %}warning{% else %}info{% endif %}">
+    {% if person is empty %}No{% else %}Yes{% endif %}
+</span>

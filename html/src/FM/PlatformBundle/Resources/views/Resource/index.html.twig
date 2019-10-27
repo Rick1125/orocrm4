@@ -1,0 +1,19 @@
+{% extends "OroUIBundle:actions:index.html.twig" %}
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% set gridName = 'fm-resource-grid' %}
+{% set pageTitle = 'Resources' %}
+
+{% block navButtons %}
+    {% include 'OroImportExportBundle:ImportExport:buttons_from_configuration.html.twig' with {
+        'alias': 'fm.resource'
+    } %}
+
+    {% if is_granted('fm_resource_create') %}
+        <div class="btn-group">
+            {{ UI.addButton({
+                'path' : path('fm_resource_create'),
+                'entity_label': 'Resource'
+            }) }}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+services:
+    fm.datagrid.extension.mass_action.handler.fill_resource:
+        class: 'FM\PlatformBundle\Datagrid\Extension\MassAction\ResourceHandler'
+        shared: false
+        arguments:
+            - '@oro_security.acl_helper'
+            - '@security.token_storage'
+            - '@translator'
+            - '%%count%% resource(s) were added to queue'
+            - '%%count%% resource(s) were failed to add queue'
+
+    fm.datagrid.mass_action.handle_resource:
+        class: Oro\Bundle\DataGridBundle\Extension\MassAction\Actions\Ajax\AjaxMassAction
+        shared: false
+        tags:
+            - { name: oro_datagrid.extension.mass_action.type, type: handle_resource }
