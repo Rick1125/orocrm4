@@ -32,7 +32,6 @@ services:
             - MYSQL_PASSWORD=${PROJECT}
             - MYSQL_ROOT_PASSWORD=admin
             - LANG=C.UTF-8
-        restart: always
         volumes:
             - "./data/mysql:/var/lib/mysql"
             - "./logs/mysql:/var/log/mysql"
