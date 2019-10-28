@@ -10,7 +10,8 @@ use FM\PlatformBundle\Constant\Status;
 use FM\PlatformBundle\Entity\Resource;
 use InvalidArgumentException as InvalidArgumentExceptionAlias;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use Oro\Bundle\SecurityBundle\ORM\Walker\AclHelper;
 

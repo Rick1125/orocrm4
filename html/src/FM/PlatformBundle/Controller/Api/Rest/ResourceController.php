@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\Annotations\NamePrefix;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SoapBundle\Controller\Api\Rest\RestController;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @RouteResource("resource")
@@ -23,7 +24,7 @@ class ResourceController extends RestController
      *
      * @param int $id Resource id
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Acl(
      *      id="fm_resource_delete",
      *      type="entity",

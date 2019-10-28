@@ -94,5 +94,13 @@ class Result extends BaseEntity
     {
         return $this->price;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 }
 
