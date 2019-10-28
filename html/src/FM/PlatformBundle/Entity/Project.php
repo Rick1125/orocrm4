@@ -6,15 +6,56 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FM\PlatformBundle\Constant\Status;
+use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\Config;
 use Oro\Bundle\UserBundle\Entity\User;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
 
 /**
  * Project
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  *
  * @ORM\Table(name="fm_project")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
+ * @Config(
+ *      routeName="fm_project_index",
+ *      routeView="fm_project_view",
+ *      defaultValues={
+ *          "ownership"={
+ *              "owner_type"="BUSINESS_UNIT",
+ *              "owner_field_name"="owner",
+ *              "owner_column_name"="business_unit_owner_id",
+ *              "organization_field_name"="organization",
+ *              "organization_column_name"="organization_id"
+ *          },
+ *          "security"={
+ *              "type"="ACL",
+ *              "group_name"="",
+ *              "field_acl_supported"="true",
+ *              "category"="fm_management"
+ *          },
+ *          "dataaudit"={
+ *              "auditable"=true
+ *          },
+ *          "form"={
+ *              "form_type"="FM\PlatformBundle\Form\Type\ProjectType",
+ *              "grid_name"="fm-project-grid",
+ *          },
+ *          "grid"={
+ *              "default"="fm-project-grid"
+ *          },
+ *          "tag"={
+ *              "enabled"=true
+ *          },
+ *          "merge"={
+ *              "enable"=true
+ *          }
+ *      }
+ * )
  */
 class Project extends AbstractEntity
 {

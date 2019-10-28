@@ -10,6 +10,8 @@ namespace FM\PlatformBundle\Migrations\Schema;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\SchemaException;
+use FM\PlatformBundle\Entity\Resource;
+use Oro\Bundle\EntityConfigBundle\Migration\UpdateEntityConfigEntityValueQuery;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
@@ -50,6 +52,15 @@ class FMPlatformBundle implements Installation
         $this->addFmProjectHasResourcesForeignKeys($schema);
         $this->addFmResourceForeignKeys($schema);
         $this->addFmResourceResultForeignKeys($schema);
+
+        $queries->addQuery(
+            new UpdateEntityConfigEntityValueQuery(
+                Resource::class,
+                'security',
+                'field_acl_supported',
+                true
+            )
+        );
     }
 
     /**
@@ -60,16 +71,17 @@ class FMPlatformBundle implements Installation
     protected function createFmChannelTable(Schema $schema)
     {
         try {
-            $schema->getTable(Table::CHANNEL);
+            $table = $schema->getTable(Table::CHANNEL);
         } catch (SchemaException $e) {
             $table = $schema->createTable(Table::CHANNEL);
-            $table->addColumn('id', 'integer', ['autoincrement' => true]);
-            $table->addColumn('name', 'string', ['length' => 255]);
-            $table->addColumn('created_at', 'datetime', []);
-            $table->addColumn('updated_at', 'datetime', []);
-            $table->setPrimaryKey(['id']);
-            $table->addUniqueIndex(['name'], 'UNIQ_21CCCAE15E237E06');
         }
+        $table->addColumn('id', 'integer', ['autoincrement' => true]);
+        $table->addColumn('name', 'string', ['length' => 255]);
+        $table->addColumn('is_person', 'boolean', ['default' => true]);
+        $table->addColumn('created_at', 'datetime', []);
+        $table->addColumn('updated_at', 'datetime', []);
+        $table->setPrimaryKey(['id']);
+        $table->addUniqueIndex(['name'], 'UNIQ_21CCCAE15E237E06');
     }
 
     /**
@@ -80,30 +92,30 @@ class FMPlatformBundle implements Installation
     protected function createFmContractTable(Schema $schema)
     {
         try {
-            $schema->getTable(Table::CONTRACT);
+            $table = $schema->getTable(Table::CONTRACT);
         } catch (SchemaException $e) {
             $table = $schema->createTable(Table::CONTRACT);
-            $table->addColumn('id', 'integer', ['autoincrement' => true]);
-            $table->addColumn('assigned_to_user_id', 'integer', ['notnull' => false]);
-            $table->addColumn('updated_by_user_id', 'integer', ['notnull' => false]);
-            $table->addColumn('organization_id', 'integer', ['notnull' => false]);
-            $table->addColumn('business_unit_owner_id', 'integer', ['notnull' => false]);
-            $table->addColumn('created_by_user_id', 'integer', ['notnull' => false]);
-            $table->addColumn('name', 'string', ['length' => 255]);
-            $table->addColumn('status', 'string', ['length' => 15]);
-            $table->addColumn('description', 'text', []);
-            $table->addColumn('amount', 'decimal', ['scale' => 2]);
-            $table->addColumn('launched_at', 'datetime', []);
-            $table->addColumn('expired_at', 'datetime', []);
-            $table->addColumn('created_at', 'datetime', []);
-            $table->addColumn('updated_at', 'datetime', []);
-            $table->setPrimaryKey(['id']);
-            $table->addIndex(['assigned_to_user_id'], 'IDX_D6B91BC011578D11', []);
-            $table->addIndex(['organization_id'], 'IDX_D6B91BC032C8A3DE', []);
-            $table->addIndex(['business_unit_owner_id'], 'IDX_D6B91BC059294170', []);
-            $table->addIndex(['created_by_user_id'], 'IDX_D6B91BC07D182D95', []);
-            $table->addIndex(['updated_by_user_id'], 'IDX_D6B91BC02793CC5E', []);
         }
+        $table->addColumn('id', 'integer', ['autoincrement' => true]);
+        $table->addColumn('assigned_to_user_id', 'integer', ['notnull' => false]);
+        $table->addColumn('updated_by_user_id', 'integer', ['notnull' => false]);
+        $table->addColumn('organization_id', 'integer', ['notnull' => false]);
+        $table->addColumn('business_unit_owner_id', 'integer', ['notnull' => false]);
+        $table->addColumn('created_by_user_id', 'integer', ['notnull' => false]);
+        $table->addColumn('name', 'string', ['length' => 255]);
+        $table->addColumn('status', 'string', ['length' => 15]);
+        $table->addColumn('description', 'text', []);
+        $table->addColumn('amount', 'decimal', ['scale' => 2]);
+        $table->addColumn('launched_at', 'datetime', []);
+        $table->addColumn('expired_at', 'datetime', []);
+        $table->addColumn('created_at', 'datetime', []);
+        $table->addColumn('updated_at', 'datetime', []);
+        $table->setPrimaryKey(['id']);
+        $table->addIndex(['assigned_to_user_id'], 'IDX_D6B91BC011578D11', []);
+        $table->addIndex(['organization_id'], 'IDX_D6B91BC032C8A3DE', []);
+        $table->addIndex(['business_unit_owner_id'], 'IDX_D6B91BC059294170', []);
+        $table->addIndex(['created_by_user_id'], 'IDX_D6B91BC07D182D95', []);
+        $table->addIndex(['updated_by_user_id'], 'IDX_D6B91BC02793CC5E', []);
     }
 
     /**
@@ -219,15 +231,19 @@ class FMPlatformBundle implements Installation
             $table->addColumn('created_by_user_id', 'integer', ['notnull' => false]);
             $table->addColumn('platform_id', 'integer', ['notnull' => false]);
             $table->addColumn('name', 'string', ['length' => 255]);
+            $table->addColumn('channel_name', 'string', ['length' => 255, 'default' => '']);
             $table->addColumn('nickname', 'string', ['notnull' => false, 'length' => 255]);
             $table->addColumn('status', 'string', ['length' => 15]);
             $table->addColumn('link', 'string', ['length' => 1024]);
             $table->addColumn('link_hash', 'string', ['length' => 32]);
-            $table->addColumn('person', 'boolean', []);
+            $table->addColumn('is_person', 'boolean', ['default' => true]);
             $table->addColumn('score', 'decimal', ['scale' => 2]);
-            $table->addColumn('price', 'decimal', ['scale' => 2]);
-            $table->addColumn('price_a', 'decimal', ['scale' => 2]);
-            $table->addColumn('price_b', 'decimal', ['scale' => 2]);
+            $table->addColumn('quote_direct', 'decimal', ['scale' => 2]);
+            $table->addColumn('quote_repost', 'decimal', ['scale' => 2]);
+            $table->addColumn('cost_direct', 'decimal', ['scale' => 2]);
+            $table->addColumn('cost_repost', 'decimal', ['scale' => 2]);
+            $table->addColumn('discount', 'decimal', ['scale' => 2, 'default' => 1.0]);
+            $table->addColumn('follower', 'decimal', ['scale' => 2, 'default' => 0, 'nullable' => true]);
             $table->addColumn('memo', 'string', ['notnull' => false, 'length' => 1024]);
             $table->addColumn('created_at', 'datetime', []);
             $table->addColumn('updated_at', 'datetime', []);

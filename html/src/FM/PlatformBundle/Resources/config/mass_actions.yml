@@ -11,6 +11,7 @@ services:
 
     fm.datagrid.mass_action.handle_resource:
         class: Oro\Bundle\DataGridBundle\Extension\MassAction\Actions\Ajax\AjaxMassAction
+        public: true
         shared: false
         tags:
             - { name: oro_datagrid.extension.mass_action.type, type: handle_resource }

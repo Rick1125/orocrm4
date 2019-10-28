@@ -10,31 +10,19 @@ use FM\PlatformBundle\Entity\Platform;
 
 class LoadChannelData extends AbstractFixture
 {
-
     public function load(ObjectManager $manager)
     {
         $channels = [
-            "鼓山", "楼氏", "蜂群", "牙仙", "大禹", "创客", "锐拓"
+            "鼓山" => 0, "楼氏" => 0, "蜂群" => 0, "牙仙" => 0, "大禹" => 0, "创客" => 0, "锐拓" => 0
         ];
 
-        foreach ($channels as $name) {
+        foreach ($channels as $name => $personal) {
             $channel = new Channel();
             $channel
                 ->setName($name)
+                ->setPerson($personal)
             ;
             $manager->persist($channel);
-        }
-
-        $platforms = [
-            'WeChat' => '.*',
-            '新浪微博' => 'weibo.com',
-            '抖音' => 'www.douyin.com',
-            'B站' => 'www.bilibili.com',
-        ];
-
-        foreach ($platforms as $name => $rule) {
-            $p = new Platform();
-            $manager->persist($p->setName($name)->setMatchRule($rule));
         }
 
         $manager->flush();

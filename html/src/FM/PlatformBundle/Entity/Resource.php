@@ -11,6 +11,10 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
 /**
  * Resource
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  *
  * @ORM\Table(name="fm_resource", options={"collate":"utf8mb4_bin", "charset":"utf8mb4"})
  * @ORM\Entity()
@@ -50,10 +54,6 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *          }
  *      }
  * )
- * @SuppressWarnings(PHPMD.ExcessivePublicCount)
- * @SuppressWarnings(PHPMD.TooManyFields)
- * @SuppressWarnings(PHPMD.ExcessiveClassLength)
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class Resource extends ExtendResource
 {
@@ -198,9 +198,6 @@ class Resource extends ExtendResource
      *          "importexport"={
      *              "header"="Follower",
      *              "order"=35
-     *          },
-     *          "security"={
-     *              "permissions"="VIEW;CREATE;EDIT",
      *          }
      *      }
      * )
@@ -216,6 +213,9 @@ class Resource extends ExtendResource
      *          "importexport"={
      *              "header"="Cost Direct",
      *              "order"=40
+     *          },
+     *          "security"={
+     *              "permissions"="VIEW;CREATE;EDIT",
      *          }
      *      }
      * )
@@ -231,6 +231,9 @@ class Resource extends ExtendResource
      *          "importexport"={
      *              "header"="Cost Repost",
      *              "order"=50
+     *          },
+     *          "security"={
+     *              "permissions"="VIEW;CREATE;EDIT",
      *          }
      *      }
      * )
@@ -266,27 +269,6 @@ class Resource extends ExtendResource
      * )
      */
     private $channelName = '';
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="decimal", scale=2, precision=10)
-     */
-    private $price = 0.0;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price_a", type="decimal", scale=2, precision=10)
-     */
-    private $priceA = 0.0;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price_b", type="decimal", scale=2, precision=10)
-     */
-    private $priceB = 0.0;
 
     /**
      * @var boolean
@@ -636,7 +618,7 @@ class Resource extends ExtendResource
 
     /**
      * @param bool $person
-     * @return Channel
+     * @return Resource
      */
     public function setPerson(bool $person): Channel
     {
@@ -697,29 +679,5 @@ class Resource extends ExtendResource
     public function getFollower()
     {
         return $this->follower;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPriceA()
-    {
-        return $this->priceA;
-    }
-
-    /**
-     * @return float
-     */
-    public function getPriceB()
-    {
-        return $this->priceB;
     }
 }
