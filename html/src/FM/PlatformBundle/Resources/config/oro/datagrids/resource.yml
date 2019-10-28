@@ -44,8 +44,14 @@ datagrids:
             quoteDirect:
                 label:         'Quote Direct'
                 frontend_type: currency
+            costDirect:
+                label:         'Cost Direct'
+                frontend_type: currency
             quoteRepost:
                 label:         'Quote Repost'
+                frontend_type: currency
+            costRepost:
+                label:         'Cost Repost'
                 frontend_type: currency
             createdAt:
                 label:         'Created At'
