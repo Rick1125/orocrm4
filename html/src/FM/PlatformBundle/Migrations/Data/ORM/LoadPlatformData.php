@@ -5,7 +5,6 @@ namespace FM\PlatformBundle\Migrations\Data\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use FM\PlatformBundle\Entity\Channel;
 use FM\PlatformBundle\Entity\Platform;
 
 class LoadPlatformData extends AbstractFixture

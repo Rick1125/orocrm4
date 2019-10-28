@@ -6,7 +6,6 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use FM\PlatformBundle\Entity\Channel;
-use FM\PlatformBundle\Entity\Platform;
 
 class LoadChannelData extends AbstractFixture
 {
