@@ -3,15 +3,15 @@
 namespace FM\PlatformBundle\Controller;
 
 use FM\PlatformBundle\Entity\Project;
-use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ProjectController
  *
- * @BaseRoute("/project")
+ * @Route("/project")
  * @package FM\PlatformBundle\Controller
  */
 class ProjectController extends AbstractController
@@ -27,7 +27,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/view/{id}", name="fm_project_view", requirements={"id"="\d+"})
+     * @Route("/view/{id}", name="fm_project_view", requirements={"id"="\d+"})
      * @AclAncestor("fm_project_view")
      * @Template()
      * @param Project $project
@@ -39,7 +39,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/create", name="fm_project_create")
+     * @Route("/create", name="fm_project_create")
      * @AclAncestor("fm_project_create")
      * @Template("FMPlatformBundle:Project:update.html.twig")
      */
@@ -49,7 +49,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/update/{id}", name="fm_project_update", requirements={"id"="\d+"})
+     * @Route("/update/{id}", name="fm_project_update", requirements={"id"="\d+"})
      * @AclAncestor("fm_project_update")
      * @Template("FMPlatformBundle:Project:update.html.twig")
      * @param project $entity
@@ -77,7 +77,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/widget/info/{id}", name="fm_project_widget_info", requirements={"id"="\d+"})
+     * @Route("/widget/info/{id}", name="fm_project_widget_info", requirements={"id"="\d+"})
      * @AclAncestor("fm_project_view")
      * @Template("FMPlatformBundle:Project/widget:info.html.twig")
      * @param project $project

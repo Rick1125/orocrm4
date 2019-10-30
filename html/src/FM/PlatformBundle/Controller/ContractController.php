@@ -3,10 +3,10 @@
 namespace FM\PlatformBundle\Controller;
 
 use FM\PlatformBundle\Entity\Contract;
-use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ContractController
@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContractController extends AbstractController
 {
     /**
-     * @BaseRoute("/", name="fm_contract_index")
+     * @Route("/", name="fm_contract_index")
      * @AclAncestor("fm_contract_view")
      * @Template()
      */
@@ -27,7 +27,7 @@ class ContractController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/view/{id}", name="fm_contract_view", requirements={"id"="\d+"})
+     * @Route("/view/{id}", name="fm_contract_view", requirements={"id"="\d+"})
      * @AclAncestor("fm_contract_view")
      * @Template()
      * @param Contract $contract
@@ -39,7 +39,7 @@ class ContractController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/create", name="fm_contract_create")
+     * @Route("/create", name="fm_contract_create")
      * @AclAncestor("fm_contract_create")
      * @Template("FMPlatformBundle:Contract:update.html.twig")
      */
@@ -49,7 +49,7 @@ class ContractController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/update/{id}", name="fm_contract_update", requirements={"id"="\d+"})
+     * @Route("/update/{id}", name="fm_contract_update", requirements={"id"="\d+"})
      * @AclAncestor("fm_contract_update")
      * @Template("FMPlatformBundle:Contract:update.html.twig")
      * @param contract $entity
@@ -77,7 +77,7 @@ class ContractController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/widget/info/{id}", name="fm_contract_widget_info", requirements={"id"="\d+"})
+     * @Route("/widget/info/{id}", name="fm_contract_widget_info", requirements={"id"="\d+"})
      * @AclAncestor("fm_contract_view")
      * @Template("FMPlatformBundle:Contract/widget:info.html.twig")
      * @param Contract $contract

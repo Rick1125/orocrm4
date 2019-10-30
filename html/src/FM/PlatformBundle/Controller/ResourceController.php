@@ -6,17 +6,18 @@ use FM\PlatformBundle\Entity\Resource;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ResourceController
  *
- * @BaseRoute("/resource")
+ * @Route("/resource")
  * @package FM\PlatformBundle\Controller
  */
 class ResourceController extends AbstractController
 {
     /**
-     * @BaseRoute("/", name="fm_resource_index")
+     * @Route("/", name="fm_resource_index")
      * @AclAncestor("fm_resource_view")
      * @Template()
      */
@@ -28,7 +29,7 @@ class ResourceController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/view/{id}", name="fm_resource_view", requirements={"id"="\d+"})
+     * @Route("/view/{id}", name="fm_resource_view", requirements={"id"="\d+"})
      * @AclAncestor("fm_resource_view")
      * @Template()
      * @param Resource $resource
@@ -40,7 +41,7 @@ class ResourceController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/create", name="fm_resource_create")
+     * @Route("/create", name="fm_resource_create")
      * @AclAncestor("fm_resource_create")
      * @Template("FMPlatformBundle:Resource:update.html.twig")
      */
@@ -50,7 +51,7 @@ class ResourceController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/update/{id}", name="fm_resource_update", requirements={"id"="\d+"})
+     * @Route("/update/{id}", name="fm_resource_update", requirements={"id"="\d+"})
      * @AclAncestor("fm_resource_update")
      * @Template("FMPlatformBundle:Resource:update.html.twig")
      * @param Resource $entity
@@ -78,7 +79,7 @@ class ResourceController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/widget/info/{id}", name="fm_resource_widget_info", requirements={"id"="\d+"})
+     * @Route("/widget/info/{id}", name="fm_resource_widget_info", requirements={"id"="\d+"})
      * @AclAncestor("fm_resource_view")
      * @Template("FMPlatformBundle:Resource/widget:info.html.twig")
      * @param Resource $resource

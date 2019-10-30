@@ -6,6 +6,7 @@ use FM\PlatformBundle\Entity\Platform;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class PlatformController
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PlatformController extends AbstractController
 {
     /**
-     * @BaseRoute("/", name="fm_platform_index")
+     * @Route("/", name="fm_platform_index")
      * @AclAncestor("fm_resource_view")
      * @Template()
      */
@@ -26,7 +27,7 @@ class PlatformController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/create", name="fm_platform_create")
+     * @Route("/create", name="fm_platform_create")
      * @AclAncestor("fm_resource_create")
      * @Template("FMPlatformBundle:Platform:update.html.twig")
      */

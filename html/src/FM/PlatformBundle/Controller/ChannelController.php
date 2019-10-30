@@ -7,17 +7,18 @@ use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ChannelController
  *
- * @BaseRoute("/chgroup")
+ * @Route("/chgroup")
  * @package FM\PlatformBundle\Controller
  */
 class ChannelController extends AbstractController
 {
     /**
-     * @BaseRoute("/", name="fm_channel_index")
+     * @Route("/", name="fm_channel_index")
      * @AclAncestor("fm_resource_view")
      * @Template()
      */
@@ -27,7 +28,7 @@ class ChannelController extends AbstractController
     }
 
     /**
-     * @BaseRoute("/create", name="fm_channel_create")
+     * @Route("/create", name="fm_channel_create")
      * @Acl(
      *      id="fm_channel_create",
      *      type="entity",
