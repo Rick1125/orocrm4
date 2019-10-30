@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ProjectController
  *
- * @Route("/project")
  * @package FM\ProjectBundle\Controller
  */
 class ProjectController extends AbstractController

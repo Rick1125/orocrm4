@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ContractController
  *
- * @Route("/contract")
  * @package FM\Bundle\ContractBundle\Controller
  */
 class ContractController extends AbstractController
