@@ -66,7 +66,7 @@ class Contract extends AbstractEntity
      * Contract has Projects
      * @var Collection|Project[]
      *
-     * @ORM\ManyToMany(targetEntity="Project")
+     * @ORM\ManyToMany(targetEntity="FM\Bundle\ProjectBundle\Entity\Project")
      * @ORM\JoinTable(name="fm_contract_has_projects",
      *      joinColumns={@ORM\JoinColumn(name="contract_id", referencedColumnName="id", onDelete="CASCADE")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id", onDelete="CASCADE")}
