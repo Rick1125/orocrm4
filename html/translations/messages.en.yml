@@ -16,6 +16,8 @@ fm:
     resource:
         entity_label: 'Resource'
         entity_plural_label: 'Resources'
+        owner:
+            label: 'Owner'
     nav:
         project:
             label: 'Project'
@@ -33,35 +35,19 @@ fm:
             label: 'Resource'
             plural_label: 'Resources'
     entity:
-        name:
-            label: 'Name'
-        contact_name:
-            label: 'Contact Name'
-        status:
-            label: 'Status'
-        link:
-            label: 'Link'
-        link_hash:
-            label: 'Link Hash'
-        score:
-            label: 'Score'
-        quote_direct:
-            label: 'Quote Direct'
-        quote_repost:
-            label: 'Quote RePost'
-        cost_direct:
-            label: 'Cost Direct'
-        cost_repost:
-            label: 'Cost RePost'
-        follower:
-            label: 'Followers(Ten-Thousand)'
-        memo:
-            label: 'Memo'
-        channel_name:
-            label: 'Channel Name'
-        platform_name:
-            label: 'Platform Name'
-        person:
-            label: 'Person'
-        discount:
-            label: 'Discount'
+        name: 'Name'
+        contact_name: 'Contact Name'
+        status: 'Status'
+        link: 'Link'
+        link_hash: 'Link Hash'
+        score: 'Score'
+        quote_direct: 'Quote Direct'
+        quote_repost: 'Quote RePost'
+        cost_direct: 'Cost Direct'
+        cost_repost: 'Cost RePost'
+        follower: 'Followers(Ten-Thousand)'
+        memo: 'Memo'
+        channel_name: 'Channel Name'
+        platform_name: 'Platform Name'
+        person: 'Person'
+        discount: 'Discount'
