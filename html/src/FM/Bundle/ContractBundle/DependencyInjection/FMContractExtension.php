@@ -1,6 +1,6 @@
 <?php
 
-namespace FM\Bundle\ResourceBundle\DependencyInjection;
+namespace FM\Bundle\ContractBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class FMContractExtension extends Extension
 {
-    const ALIAS = 'fm_project';
+    const ALIAS = 'fm_contract';
 
     /**
      * {@inheritdoc}
