@@ -159,11 +159,11 @@ datagrids:
                 label:         'Link'
             channelName:
                 label:         'Channel'
-            priceA:
-                label:         'Price A'
+            quoteDirect:
+                label:         'Quote Direct'
                 frontend_type: currency
-            priceB:
-                label:         'Price B'
+            quoteRepost:
+                label:         'Quote Repost'
                 frontend_type: currency
         filters:
             columns:

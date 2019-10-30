@@ -3,22 +3,20 @@
 namespace FM\PlatformBundle\Controller;
 
 use FM\PlatformBundle\Entity\Resource;
-use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Class ResourceController
  *
- * @Route("/resource")
+ * @BaseRoute("/resource")
  * @package FM\PlatformBundle\Controller
  */
-class ResourceController extends Controller
+class ResourceController extends AbstractController
 {
     /**
-     * @Route("/", name="fm_resource_index")
+     * @BaseRoute("/", name="fm_resource_index")
      * @AclAncestor("fm_resource_view")
      * @Template()
      */
@@ -30,13 +28,8 @@ class ResourceController extends Controller
     }
 
     /**
-     * @Route("/view/{id}", name="fm_resource_view", requirements={"id"="\d+"})
-     * @Acl(
-     *      id="fm_resource_view",
-     *      type="entity",
-     *      class="FMPlatformBundle:Resource",
-     *      permission="VIEW"
-     * )
+     * @BaseRoute("/view/{id}", name="fm_resource_view", requirements={"id"="\d+"})
+     * @AclAncestor("fm_resource_view")
      * @Template()
      * @param Resource $resource
      * @return array
@@ -47,13 +40,8 @@ class ResourceController extends Controller
     }
 
     /**
-     * @Route("/create", name="fm_resource_create")
-     * @Acl(
-     *      id="fm_resource_create",
-     *      type="entity",
-     *      class="FMPlatformBundle:Resource",
-     *      permission="CREATE"
-     * )
+     * @BaseRoute("/create", name="fm_resource_create")
+     * @AclAncestor("fm_resource_create")
      * @Template("FMPlatformBundle:Resource:update.html.twig")
      */
     public function createAction()
@@ -62,13 +50,8 @@ class ResourceController extends Controller
     }
 
     /**
-     * @Route("/update/{id}", name="fm_resource_update", requirements={"id"="\d+"})
-     * @Acl(
-     *      id="fm_resource_update",
-     *      type="entity",
-     *      class="FMPlatformBundle:Resource",
-     *      permission="EDIT"
-     * )
+     * @BaseRoute("/update/{id}", name="fm_resource_update", requirements={"id"="\d+"})
+     * @AclAncestor("fm_resource_update")
      * @Template("FMPlatformBundle:Resource:update.html.twig")
      * @param Resource $entity
      * @return array
@@ -95,7 +78,7 @@ class ResourceController extends Controller
     }
 
     /**
-     * @Route("/widget/info/{id}", name="fm_resource_widget_info", requirements={"id"="\d+"})
+     * @BaseRoute("/widget/info/{id}", name="fm_resource_widget_info", requirements={"id"="\d+"})
      * @AclAncestor("fm_resource_view")
      * @Template("FMPlatformBundle:Resource/widget:info.html.twig")
      * @param Resource $resource

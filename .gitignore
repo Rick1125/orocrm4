@@ -1,0 +1,17 @@
+html/*.json
+html/*.lock
+html/LICENSE
+html/*.dist
+html/*.md
+html/Vagrantfile
+html/webpack.config.js
+html/.phpcomplete_extended/
+html/bin/
+html/config/
+html/public/
+html/templates/
+html/vendor/
+html/translations/
+html/makefile
+var/
+logs/

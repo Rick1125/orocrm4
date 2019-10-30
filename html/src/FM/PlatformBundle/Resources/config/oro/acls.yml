@@ -1,0 +1,49 @@
+acls:
+    fm_platform_view:
+        type: entity
+        class: FMPlatformBundle:Platform
+        permission: VIEW
+    fm_platform_create:
+        type: entity
+        class: FMPlatformBundle:Platform
+        permission: CREATE
+    fm_platform_update:
+        type: entity
+        class: FMPlatformBundle:Platform
+        permission: EDIT
+    fm_resource_view:
+        type: entity
+        class: FMPlatformBundle:Resource
+        permission: VIEW
+    fm_resource_create:
+        type: entity
+        class: FMPlatformBundle:Resource
+        permission: CREATE
+    fm_resource_update:
+        type: entity
+        class: FMPlatformBundle:Resource
+        permission: EDIT
+    fm_contract_view:
+        type: entity
+        class: FMPlatformBundle:Contract
+        permission: VIEW
+    fm_contract_create:
+        type: entity
+        class: FMPlatformBundle:Contract
+        permission: CREATE
+    fm_contract_update:
+        type: entity
+        class: FMPlatformBundle:Contract
+        permission: EDIT
+    fm_project_view:
+        type: entity
+        class: FMPlatformBundle:Project
+        permission: VIEW
+    fm_project_create:
+        type: entity
+        class: FMPlatformBundle:Project
+        permission: CREATE
+    fm_project_update:
+        type: entity
+        class: FMPlatformBundle:Project
+        permission: EDIT

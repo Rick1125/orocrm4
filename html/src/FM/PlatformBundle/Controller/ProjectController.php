@@ -6,19 +6,18 @@ use FM\PlatformBundle\Entity\Project;
 use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Class ProjectController
  *
- * @Route("/project")
+ * @BaseRoute("/project")
  * @package FM\PlatformBundle\Controller
  */
-class ProjectController extends Controller
+class ProjectController extends AbstractController
 {
     /**
-     * @Route("/", name="fm_project_index")
+     * @BaseRoute("/", name="fm_project_index")
      * @AclAncestor("fm_project_view")
      * @Template()
      */
@@ -28,13 +27,8 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/view/{id}", name="fm_project_view", requirements={"id"="\d+"})
-     * @Acl(
-     *      id="fm_project_view",
-     *      type="entity",
-     *      class="FMPlatformBundle:Project",
-     *      permission="VIEW"
-     * )
+     * @BaseRoute("/view/{id}", name="fm_project_view", requirements={"id"="\d+"})
+     * @AclAncestor("fm_project_view")
      * @Template()
      * @param Project $project
      * @return array
@@ -45,13 +39,8 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/create", name="fm_project_create")
-     * @Acl(
-     *      id="fm_project_create",
-     *      type="entity",
-     *      class="FMPlatformBundle:Project",
-     *      permission="CREATE"
-     * )
+     * @BaseRoute("/create", name="fm_project_create")
+     * @AclAncestor("fm_project_create")
      * @Template("FMPlatformBundle:Project:update.html.twig")
      */
     public function createAction()
@@ -60,13 +49,8 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/update/{id}", name="fm_project_update", requirements={"id"="\d+"})
-     * @Acl(
-     *      id="fm_project_update",
-     *      type="entity",
-     *      class="FMPlatformBundle:Project",
-     *      permission="EDIT"
-     * )
+     * @BaseRoute("/update/{id}", name="fm_project_update", requirements={"id"="\d+"})
+     * @AclAncestor("fm_project_update")
      * @Template("FMPlatformBundle:Project:update.html.twig")
      * @param project $entity
      * @return array
@@ -93,7 +77,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/widget/info/{id}", name="fm_project_widget_info", requirements={"id"="\d+"})
+     * @BaseRoute("/widget/info/{id}", name="fm_project_widget_info", requirements={"id"="\d+"})
      * @AclAncestor("fm_project_view")
      * @Template("FMPlatformBundle:Project/widget:info.html.twig")
      * @param project $project

@@ -2,34 +2,34 @@ navigation:
     menu_config:
         items:
             fm_project_tab:
-                label: 'Project'
+                label: fm.nav.project.label
                 uri:   '#'
                 extras:
                     position: 10
             fm_contract_tab:
-                label: 'Contract'
+                label: fm.nav.contract.label
                 uri:   '#'
                 extras:
                     position: 20
             fm_resource_tab:
-                label: 'Resource'
+                label: fm.nav.resource.label
                 uri:   '#'
                 extras:
                     position: 30
             resource_link:
-                label: 'Resources'
+                label: fm.nav.resource.plural_label
                 route: fm_resource_index
             contract_link:
-                label: 'Contracts'
+                label: fm.nav.contract.plural_label
                 route: fm_contract_index
             project_link:
-                label: 'Projects'
+                label: fm.nav.project.plural_label
                 route: fm_project_index
             channel_link:
-                label: 'Channels'
+                label: fm.nav.channel.plural_label
                 route: fm_channel_index
             platform_link:
-                label: 'Platforms'
+                label: fm.nav.platform.plural_label
                 route: fm_platform_index
         tree:
             application_menu:
@@ -47,8 +47,8 @@ navigation:
                             platform_link: ~
 
     titles:
-        contract_link: 'Contracts'
+        contract_link: fm.nav.contract.plural_label
         resource_link: 'KOL Lists'
-        project_link: 'Projects'
-        platform_link: 'Platforms'
-        channel_link: 'Channel Lists'
+        project_link: fm.nav.project.plural_label
+        platform_link: fm.nav.platform.plural_label
+        channel_link: fm.nav.channel.plural_label

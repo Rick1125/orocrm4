@@ -1,0 +1,17 @@
+fm:
+    nav:
+        project:
+            label: '项目'
+            plural_label: '项目'
+        contract:
+            label: '合同'
+            plural_label: '合同'
+        channel:
+            label: '渠道'
+            plural_label: '渠道'
+        platform:
+            label: '平台'
+            plural_label: '平台'
+        resource:
+            label: '资源'
+            plural_label: '资源'

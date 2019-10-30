@@ -6,19 +6,18 @@ use FM\PlatformBundle\Entity\Contract;
 use Oro\Bundle\SecurityBundle\Annotation\Acl;
 use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * Class ContractController
  *
- * @Route("/contract")
+ * @BaseRoute("/contract")
  * @package FM\PlatformBundle\Controller
  */
-class ContractController extends Controller
+class ContractController extends AbstractController
 {
     /**
-     * @Route("/", name="fm_contract_index")
+     * @BaseRoute("/", name="fm_contract_index")
      * @AclAncestor("fm_contract_view")
      * @Template()
      */
@@ -28,13 +27,8 @@ class ContractController extends Controller
     }
 
     /**
-     * @Route("/view/{id}", name="fm_contract_view", requirements={"id"="\d+"})
-     * @Acl(
-     *      id="fm_contract_view",
-     *      type="entity",
-     *      class="FMPlatformBundle:Contract",
-     *      permission="VIEW"
-     * )
+     * @BaseRoute("/view/{id}", name="fm_contract_view", requirements={"id"="\d+"})
+     * @AclAncestor("fm_contract_view")
      * @Template()
      * @param Contract $contract
      * @return array
@@ -45,13 +39,8 @@ class ContractController extends Controller
     }
 
     /**
-     * @Route("/create", name="fm_contract_create")
-     * @Acl(
-     *      id="fm_contract_create",
-     *      type="entity",
-     *      class="FMPlatformBundle:Contract",
-     *      permission="CREATE"
-     * )
+     * @BaseRoute("/create", name="fm_contract_create")
+     * @AclAncestor("fm_contract_create")
      * @Template("FMPlatformBundle:Contract:update.html.twig")
      */
     public function createAction()
@@ -60,13 +49,8 @@ class ContractController extends Controller
     }
 
     /**
-     * @Route("/update/{id}", name="fm_contract_update", requirements={"id"="\d+"})
-     * @Acl(
-     *      id="fm_contract_update",
-     *      type="entity",
-     *      class="FMPlatformBundle:Contract",
-     *      permission="EDIT"
-     * )
+     * @BaseRoute("/update/{id}", name="fm_contract_update", requirements={"id"="\d+"})
+     * @AclAncestor("fm_contract_update")
      * @Template("FMPlatformBundle:Contract:update.html.twig")
      * @param contract $entity
      * @return array
@@ -93,7 +77,7 @@ class ContractController extends Controller
     }
 
     /**
-     * @Route("/widget/info/{id}", name="fm_contract_widget_info", requirements={"id"="\d+"})
+     * @BaseRoute("/widget/info/{id}", name="fm_contract_widget_info", requirements={"id"="\d+"})
      * @AclAncestor("fm_contract_view")
      * @Template("FMPlatformBundle:Contract/widget:info.html.twig")
      * @param Contract $contract
