@@ -1,4 +1,16 @@
+'Resource Information': '资源信息'
 fm:
+    datagrid:
+        platform:
+            match_rule: '匹配规则'
+        channel:
+            person: '个人KOL'
+    project:
+        entity_plural_label: '项目'
+    contract:
+        entity_plural_label: '合同'
+    resource:
+        entity_plural_label: '资源'
     nav:
         project:
             label: '项目'
@@ -37,11 +49,13 @@ fm:
         cost_repost:
             label: '转发成本'
         follower:
-            label: '粉丝数'
+            label: '粉丝数(万)'
         memo:
             label: '备忘'
         channel_name:
             label: '渠道名'
+        platform_name:
+            label: '平台名'
         person:
             label: '个人KOL'
         discount:

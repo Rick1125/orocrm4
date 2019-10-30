@@ -13,19 +13,19 @@ datagrids:
                     - { table: '%fm.channel.entity.class%', alias: c }
         columns:
             id:
-                label:         ID
+                label:         oro.channel.id.label
             name:
-                label:         Name
+                label:         fm.entity.name.label
             person:
-                label:         "Personal KOL"
+                label:         fm.datagrid.channel.person
                 type:          twig
                 frontend_type: html
                 template:      FMResourceBundle::Datagrid/Property/person.html.twig
             createdAt:
-                label:         'Created At'
+                label:         oro.ui.created_at
                 frontend_type: datetime
             updatedAt:
-                label:         'Updated At'
+                label:         oro.ui.updated_at
                 frontend_type: datetime
         sorters:
             columns:

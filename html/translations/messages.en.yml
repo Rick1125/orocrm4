@@ -1,4 +1,16 @@
+'Resource Information': 'Resource Information'
 fm:
+    datagrid:
+        platform:
+            match_rule: 'Match Rule'
+        channel:
+            person: 'Person KOL'
+    project:
+        entity_plural_label: 'Project'
+    contract:
+        entity_plural_label: 'Contract'
+    resource:
+        entity_plural_label: 'Resource'
     nav:
         project:
             label: 'Project'
@@ -37,11 +49,13 @@ fm:
         cost_repost:
             label: 'Cost RePost'
         follower:
-            label: 'Follower'
+            label: 'Followers(Ten-Thousand)'
         memo:
             label: 'Memo'
         channel_name:
             label: 'Channel Name'
+        platform_name:
+            label: 'Platform Name'
         person:
             label: 'Person'
         discount:

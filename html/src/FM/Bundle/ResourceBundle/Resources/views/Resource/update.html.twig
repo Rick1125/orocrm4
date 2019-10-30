@@ -55,7 +55,7 @@
         {% set breadcrumbs = {
             'entity':      form.vars.value,
             'indexPath':   path('fm_resource_index'),
-            'indexLabel': 'Resources',
+            'indexLabel': fm.nav.resource.plural_label|trans,
             'entityTitle': name
         }
         %}
@@ -74,7 +74,7 @@
         'class': 'active',
         'subblocks': [
             {
-                'title': 'Basic Information',
+                'title': 'Basic Information'|trans,
                 'data': [
                     form_row(form.name),
                     form_row(form.contactName),

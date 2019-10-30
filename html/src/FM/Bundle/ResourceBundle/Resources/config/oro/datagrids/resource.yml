@@ -20,44 +20,44 @@ datagrids:
                         - { join: r.platform, alias: p }
         columns:
             name:
-                label:         'Name'
+                label:         fm.entity.name.label
             status:
-                label:         'Status'
+                label:         fm.entity.status.label
                 type:          twig
                 frontend_type: html
                 template:      'FMResourceBundle::Datagrid/Property/status_badge.html.twig'
             link:
-                label:         'Link'
-            nickname:
-                label:         'Contact Name'
+                label:         fm.entity.link.label
+            contactName:
+                label:         fm.entity.contact_name.label
             person:
-                label:         "Personal KOL"
+                label:         fm.entity.person.label
                 type:          twig
                 frontend_type: html
                 template:      FMResourceBundle::Datagrid/Property/person.html.twig
             channelName:
-                label:         'Channel'
+                label:         fm.entity.channel_name.label
             platformName:
-                label:         'Platform'
+                label:         fm.entity.platform_name.label
             follower:
-                label:         'Followers(Ten-Thousand)'
+                label:         fm.entity.follower.label
             quoteDirect:
-                label:         'Quote Direct'
+                label:         fm.entity.quote_direct.label
                 frontend_type: currency
             costDirect:
-                label:         'Cost Direct'
+                label:         fm.entity.cost_direct.label
                 frontend_type: currency
             quoteRepost:
-                label:         'Quote Repost'
+                label:         fm.entity.quote_repost.label
                 frontend_type: currency
             costRepost:
-                label:         'Cost Repost'
+                label:         fm.entity.cost_repost.label
                 frontend_type: currency
             createdAt:
-                label:         'Created At'
+                label:         oro.ui.created_at
                 frontend_type: datetime
             updatedAt:
-                label:         'Updated At'
+                label:         oro.ui.updated_at
                 frontend_type: datetime
         fields_acl:
             columns:
