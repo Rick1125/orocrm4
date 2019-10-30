@@ -34,6 +34,14 @@ class FMResourceBundle implements Installation
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getOrder()
+    {
+        return 1;
+    }
+
+    /**
      * {@inheritdoc}
      * @throws SchemaException
      */
@@ -113,7 +121,7 @@ class FMResourceBundle implements Installation
         $table->addColumn('id', 'integer', ['autoincrement' => true]);
         $table->addColumn('updated_by_user_id', 'integer', ['notnull' => false]);
         $table->addColumn('organization_id', 'integer', ['notnull' => false]);
-        $table->addColumn('business_unit_owner_id', 'integer', ['notnull' => false]);
+        $table->addColumn('user_owner_id', 'integer', ['notnull' => false]);
         $table->addColumn('channel_id', 'integer', ['notnull' => false]);
         $table->addColumn('created_by_user_id', 'integer', ['notnull' => false]);
         $table->addColumn('platform_id', 'integer', ['notnull' => false]);
@@ -139,7 +147,7 @@ class FMResourceBundle implements Installation
         $table->addIndex(['platform_id'], 'IDX_83A7C78FFFE6496F', []);
         $table->addIndex(['channel_id'], 'IDX_83A7C78F72F5A1AA', []);
         $table->addIndex(['organization_id'], 'IDX_83A7C78F32C8A3DE', []);
-        $table->addIndex(['business_unit_owner_id'], 'IDX_83A7C78F59294170', []);
+        $table->addIndex(['user_owner_id'], 'IDX_83A7C78F59294170', []);
         $table->addIndex(['created_by_user_id'], 'IDX_83A7C78F7D182D95', []);
         $table->addIndex(['updated_by_user_id'], 'IDX_83A7C78F2793CC5E', []);
     }
@@ -189,8 +197,8 @@ class FMResourceBundle implements Installation
                 ['onDelete' => 'SET NULL', 'onUpdate' => null]
             );
             $table->addForeignKeyConstraint(
-                $schema->getTable('oro_business_unit'),
-                ['business_unit_owner_id'],
+                $schema->getTable('oro_user'),
+                ['user_owner_id'],
                 ['id'],
                 ['onDelete' => 'SET NULL', 'onUpdate' => null]
             );

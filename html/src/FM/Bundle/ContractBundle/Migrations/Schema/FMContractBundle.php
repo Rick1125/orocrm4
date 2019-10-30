@@ -11,6 +11,7 @@ namespace FM\Bundle\ContractBundle\Migrations\Schema;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\SchemaException;
 use FM\Bundle\ContractBundle\Entity\Contract;
+use FM\Bundle\ProjectBundle\Migrations\Schema\FMProjectBundle;
 use Oro\Bundle\EntityConfigBundle\Migration\UpdateEntityConfigEntityValueQuery;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
@@ -28,6 +29,14 @@ class FMContractBundle implements Installation
     public function getMigrationVersion()
     {
         return 'v1_0';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getOrder()
+    {
+        return 20;
     }
 
     /**
@@ -59,7 +68,7 @@ class FMContractBundle implements Installation
      */
     protected function createFmContractTable(Schema $schema)
     {
-        if ($schema->hastable(self::table)) {
+        if ($schema->hastable(self::TABLE)) {
             return;
         }
         $table = $schema->createTable(self::TABLE);
@@ -67,7 +76,7 @@ class FMContractBundle implements Installation
         $table->addColumn('assigned_to_user_id', 'integer', ['notnull' => false]);
         $table->addColumn('updated_by_user_id', 'integer', ['notnull' => false]);
         $table->addColumn('organization_id', 'integer', ['notnull' => false]);
-        $table->addColumn('business_unit_owner_id', 'integer', ['notnull' => false]);
+        $table->addColumn('user_owner_id', 'integer', ['notnull' => false]);
         $table->addColumn('created_by_user_id', 'integer', ['notnull' => false]);
         $table->addColumn('name', 'string', ['length' => 255]);
         $table->addColumn('status', 'string', ['length' => 15]);
@@ -80,7 +89,7 @@ class FMContractBundle implements Installation
         $table->setPrimaryKey(['id']);
         $table->addIndex(['assigned_to_user_id'], 'IDX_D6B91BC011578D11', []);
         $table->addIndex(['organization_id'], 'IDX_D6B91BC032C8A3DE', []);
-        $table->addIndex(['business_unit_owner_id'], 'IDX_D6B91BC059294170', []);
+        $table->addIndex(['user_owner_id'], 'IDX_D6B91BC059294170', []);
         $table->addIndex(['created_by_user_id'], 'IDX_D6B91BC07D182D95', []);
         $table->addIndex(['updated_by_user_id'], 'IDX_D6B91BC02793CC5E', []);
     }
@@ -132,8 +141,8 @@ class FMContractBundle implements Installation
                 ['onDelete' => 'SET NULL', 'onUpdate' => null]
             );
             $table->addForeignKeyConstraint(
-                $schema->getTable('oro_business_unit'),
-                ['business_unit_owner_id'],
+                $schema->getTable('oro_user'),
+                ['user_owner_id'],
                 ['id'],
                 ['onDelete' => 'SET NULL', 'onUpdate' => null]
             );
@@ -157,13 +166,13 @@ class FMContractBundle implements Installation
         $table = $schema->getTable('fm_contract_has_projects');
         try {
             $table->addForeignKeyConstraint(
-                $schema->getTable(Table::PROJECT),
+                $schema->getTable(FMProjectBundle::TABLE),
                 ['project_id'],
                 ['id'],
                 ['onDelete' => 'CASCADE', 'onUpdate' => null]
             );
             $table->addForeignKeyConstraint(
-                $schema->getTable(Table::CONTRACT),
+                $schema->getTable(self::TABLE),
                 ['contract_id'],
                 ['id'],
                 ['onDelete' => 'CASCADE', 'onUpdate' => null]
