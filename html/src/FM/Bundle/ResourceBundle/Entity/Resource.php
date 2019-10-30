@@ -34,7 +34,7 @@ use Oro\Bundle\UserBundle\Entity\User;
  *          },
  *          "security"={
  *              "type"="ACL",
- *              "group_name"="",
+ *              "group_name"="Resource",
  *              "field_acl_supported"="true",
  *              "category"="fm_management"
  *          },
@@ -68,7 +68,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.name"
+     *              "label"="fm.entity.name.label"
      *          },
      *          "importexport"={
      *              "header"="Name",
@@ -86,7 +86,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.contact_name"
+     *              "label"="fm.entity.contact_name.label"
      *          },
      *          "importexport"={
      *              "header"="Contact Name",
@@ -104,7 +104,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.status"
+     *              "label"="fm.entity.status.label"
      *          },
      *          "importexport"={
      *              "excluded"=true
@@ -127,7 +127,7 @@ class Resource extends ExtendResource
      *              "auditable"=true
      *          },
      *          "entity"={
-     *              "label"="fm.entity.link"
+     *              "label"="fm.entity.link.label"
      *          },
      *          "importexport"={
      *              "header"="Link",
@@ -146,7 +146,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.link_hash"
+     *              "label"="fm.entity.link_hash.label"
      *          },
      *          "importexport"={
      *              "excluded"=true
@@ -163,7 +163,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.score"
+     *              "label"="fm.entity.score.label"
      *          },
      *          "importexport"={
      *              "excluded"=true
@@ -180,14 +180,14 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.quote_direct"
+     *              "label"="fm.entity.quote_direct.label"
      *          },
      *          "importexport"={
      *              "header"="Quote Direct",
      *              "order"=45
      *          },
      *          "security"={
-     *              "permissions"="VIEW;CREATE;EDIT",
+     *              "permissions"="CREATE",
      *          }
      *      }
      * )
@@ -201,14 +201,14 @@ class Resource extends ExtendResource
     * @ConfigField(
     *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.quote_repost"
+     *              "label"="fm.entity.quote_repost.label"
      *          },
     *          "importexport"={
     *              "header"="Quote Repost",
      *              "order"=55
      *          },
      *          "security"={
-     *              "permissions"="VIEW;CREATE;EDIT",
+     *              "permissions"="CREATE",
      *          }
     *      }
     * )
@@ -222,7 +222,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.follower"
+     *              "label"="fm.entity.follower.label"
      *          },
      *          "importexport"={
      *              "header"="Follower",
@@ -240,14 +240,14 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.cost_direct"
+     *              "label"="fm.entity.cost_direct.label"
      *          },
      *          "importexport"={
      *              "header"="Cost Direct",
      *              "order"=40
      *          },
      *          "security"={
-     *              "permissions"="VIEW;CREATE;EDIT",
+     *              "permissions"="CREATE",
      *          }
      *      }
      * )
@@ -261,14 +261,14 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.cost_repost"
+     *              "label"="fm.entity.cost_repost.label"
      *          },
      *          "importexport"={
      *              "header"="Cost Repost",
      *              "order"=50
      *          },
      *          "security"={
-     *              "permissions"="VIEW;CREATE;EDIT",
+     *              "permissions"="CREATE",
      *          }
      *      }
      * )
@@ -282,7 +282,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.memo"
+     *              "label"="fm.entity.memo.label"
      *          },
      *          "importexport"={
      *              "header"="Memo",
@@ -300,7 +300,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.channel_name"
+     *              "label"="fm.entity.channel_name.label"
      *          },
      *          "importexport"={
      *              "header"="Channel Name",
@@ -318,7 +318,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.person"
+     *              "label"="fm.entity.person.label"
      *          },
      *          "importexport"={
      *              "header"="Person",
@@ -336,7 +336,7 @@ class Resource extends ExtendResource
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
-     *              "label"="fm.entity.discount"
+     *              "label"="fm.entity.discount.label"
      *          },
      *          "importexport"={
      *              "header"="Discount",
@@ -360,18 +360,6 @@ class Resource extends ExtendResource
      *
      * @ORM\ManyToOne(targetEntity="Channel", inversedBy="resources")
      * @ORM\JoinColumn(name="channel_id", referencedColumnName="id", onDelete="SET NULL")
-     * @ConfigField(
-     *      defaultValues={
-     *          "merge"={
-     *              "display"=true,
-     *              "inverse_display"=false
-     *          },
-     *          "importexport"={
-     *              "order"=65,
-     *              "short"=true
-     *          }
-     *      }
-     * )
      */
     protected $channel;
 

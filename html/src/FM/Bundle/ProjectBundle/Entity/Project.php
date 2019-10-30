@@ -5,8 +5,8 @@ namespace FM\Bundle\ProjectBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use FM\Bundle\ProjectBundle\Model\ExtendProject;
 use FM\Bundle\ResourceBundle\Constant\Status;
-use FM\Bundle\ResourceBundle\Entity\AbstractEntity;
 use FM\Bundle\ResourceBundle\Entity\Resource;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\Config;
 use Oro\Bundle\UserBundle\Entity\User;
@@ -59,7 +59,7 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *      }
  * )
  */
-class Project extends AbstractEntity
+class Project extends ExtendProject
 {
     /**
      * @var string
@@ -86,6 +86,13 @@ class Project extends AbstractEntity
      * @var float
      *
      * @ORM\Column(name="quote", type="decimal", precision=10, scale=2)
+     * @ConfigField(
+     *      defaultValues={
+     *          "security"={
+     *              "permissions"="VIEW",
+     *          }
+     *      }
+     * )
      */
     private $quote;
 
@@ -93,6 +100,15 @@ class Project extends AbstractEntity
      * @var float
      *
      * @ORM\Column(name="budget", type="decimal", precision=10, scale=2)
+     * @ConfigField(
+     *      defaultValues={
+     *          "security"={
+     *              "type"="ACL",
+     *              "permissions"="VIEW",
+     *              "group_name"="Project"
+     *          }
+     *      }
+     * )
      */
     private $budget;
 
@@ -102,8 +118,10 @@ class Project extends AbstractEntity
      * @ORM\Column(name="profit_rate", type="decimal", precision=6, scale=2)
      * @ConfigField(
      *      defaultValues={
-     *          "importexport"={
-     *              "excluded"=true
+     *          "security"={
+     *              "type"="ACL",
+     *              "permissions"="VIEW",
+     *              "group_name"="Project"
      *          }
      *      }
      * )
