@@ -16,6 +16,16 @@ fm:
     resource:
         entity_label: 'Resource'
         entity_plural_label: 'Resources'
+        channel:
+            label: 'Channel'
+        platform:
+            label: 'Platform'
+        created_by:
+            label: 'Created By'
+        updated_by:
+            label: 'Updated By'
+        organization:
+            label: 'Organization'
         owner:
             label: 'Owner'
     nav:

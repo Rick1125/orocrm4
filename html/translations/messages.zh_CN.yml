@@ -16,6 +16,16 @@ fm:
     resource:
         entity_label: '资源'
         entity_plural_label: '资源'
+        channel:
+            label: '渠道'
+        platform:
+            label: '平台'
+        created_by:
+            label: '创建者'
+        updated_by:
+            label: '更新者'
+        organization:
+            label: '公司'
         owner:
             label: '拥有者'
     nav:
