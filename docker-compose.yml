@@ -21,6 +21,8 @@ services:
             - "./docker/php/supervisor/conf.d:/etc/supervisor/conf.d"
             - "./html/public:/var/www/html/public"
             - "./html/vendor:/var/www/html/vendor"
+            - "./html/src/FM:/var/www/html/src/FM"
+            - "./html/src/Resources:/var/www/html/Resources"
             - "./html/parameters.yml:/var/www/html/config/parameters.yml"
             - "./var:/var/www/html/var"
             - "./logs/supervisor:/var/log/supervisor"
