@@ -12,7 +12,7 @@ use FM\Bundle\ResourceBundle\Entity\Channel;
 use FM\Bundle\ResourceBundle\Entity\Platform;
 use FM\Bundle\ResourceBundle\Entity\Resource;
 use Oro\Bundle\ImportExportBundle\Strategy\Import\ConfigurableAddOrReplaceStrategy;
-use Oro\Bundle\OrganizationBundle\Entity\BusinessUnit;
+use Oro\Bundle\UserBundle\Entity\User;
 
 class AddBuStrategy extends ConfigurableAddOrReplaceStrategy
 {
@@ -24,7 +24,7 @@ class AddBuStrategy extends ConfigurableAddOrReplaceStrategy
     {
         $id = $id?:1;
         $em = $this->databaseHelper;
-        return $em->findOneBy(BusinessUnit::class, ['id' => $id]);
+        return $em->findOneBy(User::class, ['id' => $id]);
     }
 
     /**
