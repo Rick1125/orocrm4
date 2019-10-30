@@ -14,7 +14,7 @@
     {% if is_granted('EDIT', entity) %}
         {{ UI.editButton({
             'path': path('fm_contract_update', {'id': entity.id}),
-            'entity_label': 'Contract'
+            'entity_label': 'fm.nav.contract.label'|trans
         }) }}
     {% endif %}
 {% endblock navButtons %}
@@ -23,7 +23,7 @@
     {% set breadcrumbs = {
         'entity': entity,
         'indexPath': path('fm_contract_index'),
-        'indexLabel': 'Contracts',
+        'indexLabel': 'fm.nav.contract.plural_label'|trans,
         'rawEntityTitle': not hasGrantedNameView,
         'entityTitle': hasGrantedNameView
         ? entity.name|default('N/A')
@@ -36,7 +36,7 @@
     {% set contractInformationWidget %}
         {{ oro_widget_render({
             'widgetType': 'block',
-            'title': 'Contract Information',
+            'title': 'Contract Information'|trans,
             'url': path('fm_contract_widget_info', {id: entity.id})
         }) }}
     {% endset %}
@@ -50,7 +50,7 @@
     }] %}
 
     {% set dataBlocks = dataBlocks|merge([{
-        'title' : 'Projects',
+        'title' : 'fm.nav.project.plural_label'|trans,
         'subblocks': [{
             'title' : null,
             'useSpan': false,

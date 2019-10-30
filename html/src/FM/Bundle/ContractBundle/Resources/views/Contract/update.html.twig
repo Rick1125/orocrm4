@@ -56,7 +56,7 @@
         {% set breadcrumbs = {
             'entity':      form.vars.value,
             'indexPath':   path('fm_contract_index'),
-            'indexLabel': 'Contracts',
+            'indexLabel': 'fm.nav.contract.plural_label'|trans,
             'entityTitle': name
         }
         %}
@@ -75,7 +75,7 @@
         'class': 'active',
         'subblocks': [
             {
-                'title': 'Basic Information',
+                'title': 'Basic Information'|trans,
                 'data': [
                     form_row(form.assignedTo),
                     form_row(form.name),
@@ -112,7 +112,7 @@
     {% endif %}
 
     {% set dataBlocks = dataBlocks|merge([{
-        'title' : 'Projects',
+        'title' : 'fm.nav.project.plural_label'|trans,
         'subblocks': [{
             'title' : null,
             'useSpan': false,
