@@ -1,0 +1,56 @@
+datagrids:
+    fm-channel-grid:
+        extended_entity_name: '%fm.channel.entity.class%'
+        acl_resource: fm_resource_view
+        inline_editing:
+            enable: true
+        source:
+            type: orm
+            query:
+                select:
+                    - c
+                from:
+                    - { table: '%fm.channel.entity.class%', alias: c }
+        columns:
+            id:
+                label:         ID
+            name:
+                label:         Name
+            person:
+                label:         "Personal KOL"
+                type:          twig
+                frontend_type: html
+                template:      FMResourceBundle::Datagrid/Property/person.html.twig
+            createdAt:
+                label:         'Created At'
+                frontend_type: datetime
+            updatedAt:
+                label:         'Updated At'
+                frontend_type: datetime
+        sorters:
+            columns:
+                name:
+                    data_name: c.name
+                createdAt:
+                    data_name: c.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                name:
+                    type: string
+                    data_name: c.name
+                person:
+                    type: single_choice
+                    data_name: c.person
+                    options:
+                        field_options:
+                            choices:
+                                1: 'Yes'
+                                0: 'No'
+                createdAt:
+                    type: date
+                    data_name: k.createdAt
+        options:
+            export: true
+            entity_pagination: true

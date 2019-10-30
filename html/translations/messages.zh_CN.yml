@@ -1,0 +1,48 @@
+fm:
+    nav:
+        project:
+            label: '项目'
+            plural_label: '项目'
+        contract:
+            label: '合同'
+            plural_label: '合同'
+        channel:
+            label: '渠道'
+            plural_label: '渠道'
+        platform:
+            label: '平台'
+            plural_label: '平台'
+        resource:
+            label: '资源'
+            plural_label: '资源'
+    entity:
+        name:
+            label: '名称'
+        contact_name:
+            label: '联系人'
+        status:
+            label: '状态'
+        link:
+            label: '链接'
+        link_hash:
+            label: '链接哈希'
+        score:
+            label: '评价'
+        quote_direct:
+            label: '直发报价'
+        quote_repost:
+            label: '转发报价'
+        cost_direct:
+            label: '直发成本'
+        cost_repost:
+            label: '转发成本'
+        follower:
+            label: '粉丝数'
+        memo:
+            label: '备忘'
+        channel_name:
+            label: '渠道名'
+        person:
+            label: '个人KOL'
+        discount:
+            label: '折扣'

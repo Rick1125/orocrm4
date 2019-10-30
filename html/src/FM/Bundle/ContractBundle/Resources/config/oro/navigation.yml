@@ -1,0 +1,20 @@
+navigation:
+    menu_config:
+        items:
+            fm_contract_tab:
+                label: fm.nav.contract.label
+                uri:   '#'
+                extras:
+                    position: 20
+            contract_link:
+                label: fm.nav.contract.plural_label
+                route: fm_contract_index
+        tree:
+            application_menu:
+                children:
+                    fm_contract_tab:
+                        children:
+                            contract_link: ~
+
+    titles:
+        contract_link: fm.nav.contract.plural_label

@@ -1,0 +1,30 @@
+navigation:
+    menu_config:
+        items:
+            fm_resource_tab:
+                label: fm.nav.resource.label
+                uri:   '#'
+                extras:
+                    position: 30
+            resource_link:
+                label: fm.nav.resource.plural_label
+                route: fm_resource_index
+            channel_link:
+                label: fm.nav.channel.plural_label
+                route: fm_channel_index
+            platform_link:
+                label: fm.nav.platform.plural_label
+                route: fm_platform_index
+        tree:
+            application_menu:
+                children:
+                    fm_resource_tab:
+                        children:
+                            resource_link: ~
+                            channel_link: ~
+                            platform_link: ~
+
+    titles:
+        resource_link: 'KOL Lists'
+        platform_link: fm.nav.platform.plural_label
+        channel_link: fm.nav.channel.plural_label

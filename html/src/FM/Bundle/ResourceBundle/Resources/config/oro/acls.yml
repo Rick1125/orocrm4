@@ -1,0 +1,25 @@
+acls:
+    fm_platform_view:
+        type: entity
+        class: FMResourceBundle:Platform
+        permission: VIEW
+    fm_platform_create:
+        type: entity
+        class: FMResourceBundle:Platform
+        permission: CREATE
+    fm_platform_update:
+        type: entity
+        class: FMResourceBundle:Platform
+        permission: EDIT
+    fm_resource_view:
+        type: entity
+        class: FMResourceBundle:Resource
+        permission: VIEW
+    fm_resource_create:
+        type: entity
+        class: FMResourceBundle:Resource
+        permission: CREATE
+    fm_resource_update:
+        type: entity
+        class: FMResourceBundle:Resource
+        permission: EDIT

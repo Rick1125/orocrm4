@@ -1,0 +1,7 @@
+services:
+    ### Project Form and Type
+    fm.form.project:
+        public: true
+        class: 'Symfony\Component\Form\Form'
+        factory: ["@form.factory", "createNamed"]
+        arguments: ["project_form", 'FM\Bundle\ProjectBundle\Form\Type\ProjectType', null]

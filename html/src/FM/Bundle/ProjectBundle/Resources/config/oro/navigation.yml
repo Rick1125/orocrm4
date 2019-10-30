@@ -1,0 +1,20 @@
+navigation:
+    menu_config:
+        items:
+            fm_project_tab:
+                label: fm.nav.project.label
+                uri:   '#'
+                extras:
+                    position: 10
+            project_link:
+                label: fm.nav.project.plural_label
+                route: fm_project_index
+        tree:
+            application_menu:
+                children:
+                    fm_project_tab:
+                        children:
+                            project_link: ~
+
+    titles:
+        project_link: fm.nav.project.plural_label

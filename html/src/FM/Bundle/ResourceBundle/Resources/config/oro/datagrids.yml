@@ -1,0 +1,4 @@
+imports:
+    - { resource: datagrids/resource.yml }
+    - { resource: datagrids/channel.yml }
+    - { resource: datagrids/platform.yml }

@@ -1,0 +1,10 @@
+parameters:
+    fm.contract.entity.class: 'FM\Bundle\ContractBundle\Entity\Contract'
+
+services:
+    ### Contract Form and Type
+    fm.form.contract:
+        public: true
+        class: 'Symfony\Component\Form\Form'
+        factory: ["@form.factory", "createNamed"]
+        arguments: ["contract_form", 'FM\Bundle\ContractBundle\Form\Type\ContractType', null]

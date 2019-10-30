@@ -11,7 +11,6 @@ html/config/
 html/public/
 html/templates/
 html/vendor/
-html/translations/
 html/makefile
 var/
 logs/

@@ -1,0 +1,25 @@
+imports:
+    - { resource: mass_actions.yml }
+
+parameters:
+    fm.platform.entity.class: 'FM\Bundle\ResourceBundle\Entity\Platform'
+    fm.channel.entity.class:  'FM\Bundle\ResourceBundle\Entity\Channel'
+    fm.resource.entity.class: 'FM\Bundle\ResourceBundle\Entity\Resource'
+
+services:
+    fm.api.manager:
+        class: Oro\Bundle\SoapBundle\Entity\Manager\ApiEntityManager
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - '%fm.resource.entity.class%'
+            - '@doctrine.orm.entity_manager'
+
+#    fm.listener.navigation_listener:
+#        class: 'FM\ResourceBundle\EventListener\NavigationListener'
+#        arguments:
+#            - '@oro_entity.doctrine_helper'
+#            - '@oro_entity_config.provider.entity'
+#            - '@oro_security.token_accessor'
+#            - '@oro_security.acl_helper'
+#        tags:
+#            - { name: kernel.event_listener, event: oro_menu.configure.application_menu, method: onNavigationConfigure }

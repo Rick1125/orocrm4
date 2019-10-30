@@ -1,0 +1,13 @@
+fm_resource_bundle:
+    resource:     "@FMResourceBundle/Controller"
+    type:         annotation
+    prefix:       /
+fm.api.resource:
+    resource: '@FMResourceBundle/Controller/Api/Rest/ResourceController.php'
+    type: rest
+    prefix: api/rest/{version}/
+    requirements:
+        version: latest|v1
+        _format:  json
+    defaults:
+        version: latest

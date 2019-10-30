@@ -1,0 +1,10 @@
+dashboards:
+    widgets:
+        quick_launchpad:
+            items:
+                resources:
+                    label:      fm.nav.resource.plural_label
+                    icon:       usd
+                    route:      fm_resource_index
+                    acl:        fm_resource_view
+                    position:   40

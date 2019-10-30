@@ -1,0 +1,199 @@
+datagrids:
+    fm-project-grid:
+        extended_entity_name: '%fm.project.entity.class%'
+        acl_resource: fm_project_view
+        inline_editing:
+            enable: true
+        source:
+            type: orm
+            query:
+                select:
+                    - p
+                from:
+                    - { table: '%fm.project.entity.class%', alias: p }
+        columns:
+            id:
+                label:         ID
+            name:
+                label:         Name
+            status:
+                label:         Status
+                type:          twig
+                frontend_type: html
+                template:      FMResourceBundle::Datagrid/Property/status_badge.html.twig
+            budget:
+                label:         'Budget'
+                frontend_type: currency
+            quote:
+                label:         'Quote'
+                frontend_type: currency
+            createdAt:
+                label:         'Created At'
+                frontend_type: datetime
+            launchedAt:
+                label:         'Launched At'
+                frontend_type: datetime
+        sorters:
+            columns:
+                name:
+                    data_name: p.name
+                status:
+                    data_name: p.status
+                createdAt:
+                    data_name: p.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                name:
+                    type: string
+                    data_name: p.name
+                status:
+                    type: single_choice
+                    data_name: p.status
+                    options:
+                        field_options:
+                            choices:
+                                'enabled': 'Enabled'
+                                'disabled': 'Disabled'
+                createdAt:
+                    type: date
+                    data_name: p.createdAt
+        options:
+            export: true
+            entity_pagination: true
+
+        properties:
+            id: ~
+            view_link:
+                type:       url
+                route:      fm_project_view
+                params:
+                    - id
+            update_link:
+                type:       url
+                route:      fm_project_update
+                params:
+                    - id
+            delete_link:
+                type:       url
+                route:      fm_api_delete_project
+                params:
+                    - id
+        actions:
+            view:
+                type:          navigate
+                acl_resource:  fm_project_view
+                label:         oro.grid.action.view
+                icon:          eye
+                link:          view_link
+                rowAction:     true
+            update:
+                type:          navigate
+                acl_resource:  fm_project_update
+                label:         oro.grid.action.update
+                icon:          pencil-square-o
+                link:          update_link
+            delete:
+                type:          delete
+                label:         oro.grid.action.delete
+                link:          delete_link
+                icon:          trash-o
+                acl_resource:  fm_project_delete
+    project-relation-grid:
+        source:
+            type: orm
+            query:
+                select:
+                    - r
+                    - c.name as channelName
+                from:
+                    - { table: '%fm.resource.entity.class%', alias: r }
+                join:
+                    left:
+                        - { join: r.channel, alias: c }
+
+        columns: []
+
+        properties:
+            id: ~
+
+        sorters:
+            columns:
+                name:
+                    data_name: r.name
+        disable_default_sorting: true
+
+        filters: []
+
+    project-resources-grid:
+        extends: project-relation-grid
+        source:
+            query:
+                select:
+                    - >
+                      (CASE WHEN (:project_id IS NOT NULL) THEN
+                        CASE WHEN r.id IN (:data_in) AND r.id NOT IN (:data_not_in)
+                        THEN true ELSE false END
+                      ELSE
+                        CASE WHEN r.id IN (:data_in) AND r.id NOT IN (:data_not_in)
+                        THEN true ELSE false END
+                      END) as assign_to_project
+            bind_parameters:
+                -
+                    name: project_id
+                    default: null
+        columns:
+            assign_to_project:
+                label: 'Assigned to Project'
+                editable: true
+                frontend_type: boolean
+            name:
+                label: 'Name'
+            status:
+                label:         'Status'
+                type:          twig
+                frontend_type: html
+                template:      'FMResourceBundle::Datagrid/Property/status_badge.html.twig'
+            link:
+                label:         'Link'
+            channelName:
+                label:         'Channel'
+            quoteDirect:
+                label:         'Quote Direct'
+                frontend_type: currency
+            quoteRepost:
+                label:         'Quote Repost'
+                frontend_type: currency
+        filters:
+            columns:
+                assign_to_project:
+                    type: boolean
+                    data_name: assign_to_project
+                name:
+                    type: string
+                    data_name: r.name
+                status:
+                    type: boolean
+                    data_name: r.status
+                    options:
+                        field_options:
+                            choices:
+                                disabled: Disabled
+                                enabled: Enabled
+        sorters:
+            multiple_sorting: true
+            columns:
+                assign_to_project:
+                    data_name: assign_to_project
+            default:
+                assign_to_project: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_DESC'
+                name: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
+
+        options:
+            rowSelection:
+                dataField: id
+                columnName: assign_to_project
+                selectors:
+                    included: '#projectAppendResources'
+                    excluded: '#projectRemoveResources'

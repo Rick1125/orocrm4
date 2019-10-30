@@ -1,0 +1,10 @@
+dashboards:
+    widgets:
+        quick_launchpad:
+            items:
+                contracts:
+                    label:      fm.nav.contract.plural_label
+                    icon:       usd
+                    route:      fm_contract_index
+                    acl:        fm_contract_view
+                    position:   30

@@ -1,0 +1,13 @@
+acls:
+    fm_contract_view:
+        type: entity
+        class: FMResourceBundle:Contract
+        permission: VIEW
+    fm_contract_create:
+        type: entity
+        class: FMResourceBundle:Contract
+        permission: CREATE
+    fm_contract_update:
+        type: entity
+        class: FMResourceBundle:Contract
+        permission: EDIT

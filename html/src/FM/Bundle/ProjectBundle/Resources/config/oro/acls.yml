@@ -1,0 +1,13 @@
+acls:
+    fm_project_view:
+        type: entity
+        class: FMResourceBundle:Project
+        permission: VIEW
+    fm_project_create:
+        type: entity
+        class: FMResourceBundle:Project
+        permission: CREATE
+    fm_project_update:
+        type: entity
+        class: FMResourceBundle:Project
+        permission: EDIT

@@ -1,0 +1,36 @@
+services:
+    fm.form.handler:
+        class: 'FM\Bundle\ResourceBundle\Form\Handler\FormHandler'
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: oro_form.form.handler, alias: fm_form_handler }
+
+    ### Resource Form
+    fm.form.resource:
+        public: true
+        class: 'Symfony\Component\Form\Form'
+        factory: ["@form.factory", "createNamed"]
+        arguments: ["resource_form", 'FM\Bundle\ResourceBundle\Form\Type\ResourceType', null]
+
+    ### Channel Form
+    fm.form.channel:
+        public: true
+        class: 'Symfony\Component\Form\Form'
+        factory: ["@form.factory", "createNamed"]
+        arguments: ["channel_form", 'FM\Bundle\ResourceBundle\Form\Type\ChannelType', null]
+
+    ### Platform Form
+    fm.form.platform:
+        public: true
+        class: 'Symfony\Component\Form\Form'
+        factory: ["@form.factory", "createNamed"]
+        arguments: ["platform_form", 'FM\Bundle\ResourceBundle\Form\Type\PlatformType', null]
+
+    ### Result Form
+    fm.form.result:
+        public: true
+        class: 'Symfony\Component\Form\Form'
+        factory: ["@form.factory", "createNamed"]
+        arguments: ["result_form", 'FM\Bundle\ResourceBundle\Form\Type\ResultType', null]
+
