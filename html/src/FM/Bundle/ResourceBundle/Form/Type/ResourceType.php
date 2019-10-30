@@ -34,7 +34,7 @@ class ResourceType extends AbstractType
             ->add('name', TextType::class, ['required' => true, 'label' => 'Name'])
             ->add('status', StatusType::class, ['required' => true, 'label' => 'Status'])
             ->add('link', TextType::class, ['required' => true, 'label' => 'Link'])
-            ->add('nickname', TextType::class, ['required' => false, 'label' => 'Contact Name'])
+            ->add('contactName', TextType::class, ['required' => false, 'label' => 'Contact Name'])
             ->add('follower', TextType::class, ['required' => false, 'label' => 'Followers(Ten-Thousand)'])
             ->add('quoteDirect', OroMoneyType::class, ['required' => false, 'label' => 'Quote Direct'])
             ->add('quoteRepost', OroMoneyType::class, ['required' => false, 'label' => 'Quote Repost'])

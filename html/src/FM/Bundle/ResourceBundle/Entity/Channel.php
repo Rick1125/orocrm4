@@ -100,7 +100,7 @@ class Channel extends BaseEntity
      * @param Resource $resource
      * @return Channel
      */
-    public function addResource(Resource $resource): Channel
+    public function addResource(Resource $resource)
     {
         if (!$this->getResources()->contains($resource)) {
             $this->getResources()->add($resource);
@@ -114,7 +114,7 @@ class Channel extends BaseEntity
      * @param Resource $resource
      * @return Channel
      */
-    public function removeResource(Resource $resource): Channel
+    public function removeResource(Resource $resource)
     {
         $this->getResources()->removeElement($resource);
         if ($resource->getChannel() === $this) {
@@ -128,7 +128,7 @@ class Channel extends BaseEntity
      * @param bool $person
      * @return Channel
      */
-    public function setPerson(bool $person): Channel
+    public function setPerson(bool $person)
     {
         $this->person = $person;
         return $this;

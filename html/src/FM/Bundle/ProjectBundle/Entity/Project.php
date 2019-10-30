@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FM\Bundle\ResourceBundle\Constant\Status;
 use FM\Bundle\ResourceBundle\Entity\AbstractEntity;
+use FM\Bundle\ResourceBundle\Entity\Resource;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\Config;
 use Oro\Bundle\UserBundle\Entity\User;
 use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;

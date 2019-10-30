@@ -7,7 +7,7 @@
         {% if is_granted('VIEW', resource, 'name') %}
             <div class="responsive-block">
                 {{ UI.renderProperty('Name', resource.name) }}
-                {{ UI.renderProperty('Contact Name', resource.nickname) }}
+                {{ UI.renderProperty('Contact Name', resource.contactName) }}
                 {{ UI.renderHtmlProperty('Link', '<a href="'~resource.link~'" target="_blank">' ~ resource.link ~ '</a>') }}
                 {{ UI.renderProperty('Channel', resource.channel.name) }}
                 {{ UI.renderProperty('Personal', resource.channel.person ? 'Yes' : 'No') }}

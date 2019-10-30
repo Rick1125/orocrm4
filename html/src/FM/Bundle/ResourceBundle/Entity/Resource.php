@@ -371,6 +371,7 @@ class Resource extends ExtendResource
      *              "short"=true
      *          }
      *      }
+     * )
      */
     protected $channel;
 
