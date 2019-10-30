@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class PlatformController
  *
- * @BaseRoute("/platform")
+ * @Route("/platform")
  * @package FM\PlatformBundle\Controller
  */
 class PlatformController extends AbstractController
