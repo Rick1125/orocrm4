@@ -27,9 +27,9 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *      routeView="fm_project_view",
  *      defaultValues={
  *          "ownership"={
- *              "owner_type"="BUSINESS_UNIT",
+ *              "owner_type"="USER",
  *              "owner_field_name"="owner",
- *              "owner_column_name"="business_unit_owner_id",
+ *              "owner_column_name"="user_owner_id",
  *              "organization_field_name"="organization",
  *              "organization_column_name"="organization_id"
  *          },
@@ -43,7 +43,7 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *              "auditable"=true
  *          },
  *          "form"={
- *              "form_type"="FM\ResourceBundle\Form\Type\ProjectType",
+ *              "form_type"="FM\ProjectBundle\Form\Type\ProjectType",
  *              "grid_name"="fm-project-grid",
  *          },
  *          "grid"={
@@ -127,13 +127,27 @@ class Project extends AbstractEntity
      * Project has Resources
      * @var Collection|Resource[]
      *
-     * @ORM\ManyToMany(targetEntity="Resource")
+     * @ORM\ManyToMany(targetEntity="FM\Bundle\ResourceBundle\Entity\Resource")
      * @ORM\JoinTable(name="fm_project_has_resources",
      *      joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id", onDelete="CASCADE")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="resource_id", referencedColumnName="id", onDelete="CASCADE")}
      * )
      */
     protected $resources;
+
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="Oro\Bundle\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_owner_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ConfigField(
+     *      defaultValues={
+     *          "importexport"={
+     *              "excluded"=true
+     *          }
+     *      }
+     * )
+     */
+    protected $owner;
 
     /**
      * @var User
@@ -380,6 +394,26 @@ class Project extends AbstractEntity
     public function getAssignedTo()
     {
         return $this->assignedTo;
+    }
+
+    /**
+     * @return User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param User $owningUser
+     *
+     * @return Project
+     */
+    public function setOwner($owningUser)
+    {
+        $this->owner = $owningUser;
+
+        return $this;
     }
 
     /**
