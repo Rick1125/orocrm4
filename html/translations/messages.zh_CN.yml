@@ -8,10 +8,13 @@ fm:
         channel:
             person: '个人KOL'
     project:
+        entity_label: '项目'
         entity_plural_label: '项目'
     contract:
+        entity_label: '合同'
         entity_plural_label: '合同'
     resource:
+        entity_label: '资源'
         entity_plural_label: '资源'
     nav:
         project:

@@ -8,11 +8,14 @@ fm:
         channel:
             person: 'Person KOL'
     project:
-        entity_plural_label: 'Project'
+        entity_label: 'Project'
+        entity_plural_label: 'Projects'
     contract:
-        entity_plural_label: 'Contract'
+        entity_label: 'Contract'
+        entity_plural_label: 'Contracts'
     resource:
-        entity_plural_label: 'Resource'
+        entity_label: 'Resource'
+        entity_plural_label: 'Resources'
     nav:
         project:
             label: 'Project'
