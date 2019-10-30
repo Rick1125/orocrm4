@@ -13,7 +13,7 @@
     {% if is_granted('EDIT', entity) %}
         {{ UI.editButton({
             'path': path('fm_resource_update', {'id': entity.id}),
-            'entity_label': fm.nav.resource.label|trans
+            'entity_label': 'fm.nav.resource.label'|trans
         }) }}
     {% endif %}
 {% endblock navButtons %}
@@ -22,7 +22,7 @@
     {% set breadcrumbs = {
         'entity': entity,
         'indexPath': path('fm_resource_index'),
-        'indexLabel': fm.nav.resource.plural_label|trans,
+        'indexLabel': 'fm.nav.resource.plural_label'|trans,
         'rawEntityTitle': not hasGrantedNameView,
         'entityTitle': hasGrantedNameView
         ? entity.name|default('N/A')
@@ -42,7 +42,7 @@
 
     {% set dataBlocks = [
         {
-            'title': fm.nav.resource.label|trans,
+            'title': 'fm.nav.resource.label'|trans,
             'class': 'active',
             'subblocks': [
                 {'data' : [resourceInformationWidget] },

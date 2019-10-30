@@ -1,14 +1,14 @@
 {% extends "OroUIBundle:actions:index.html.twig" %}
 {% import 'OroUIBundle::macros.html.twig' as UI %}
 {% set gridName = 'fm-channel-grid' %}
-{% set pageTitle = fm.nav.channel.plural_label|trans %}
+{% set pageTitle = 'fm.nav.channel.plural_label'|trans %}
 
 {% block navButtons %}
     {% if is_granted('fm_resource_create') %}
         <div class="btn-group">
             {{ UI.addButton({
                 'path' : path('fm_channel_create'),
-                'entity_label': fm.nav.channel.label|trans
+                'entity_label': 'fm.nav.channel.label'|trans
             }) }}
         </div>
     {% endif %}

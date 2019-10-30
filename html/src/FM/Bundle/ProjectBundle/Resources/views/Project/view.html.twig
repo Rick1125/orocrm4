@@ -14,7 +14,7 @@
     {% if is_granted('EDIT', entity) %}
         {{ UI.editButton({
             'path': path('fm_project_update', {'id': entity.id}),
-            'entity_label': 'Project'
+            'entity_label': 'fm.nav.project.label'|trans
         }) }}
     {% endif %}
 {% endblock navButtons %}
@@ -23,7 +23,7 @@
     {% set breadcrumbs = {
         'entity': entity,
         'indexPath': path('fm_project_index'),
-        'indexLabel': 'Projects',
+        'indexLabel': 'fm.nav.project.plural_label'|trans,
         'rawEntityTitle': not hasGrantedNameView,
         'entityTitle': hasGrantedNameView
         ? entity.name|default('N/A')
@@ -36,13 +36,13 @@
     {% set projectInformationWidget %}
         {{ oro_widget_render({
             'widgetType': 'block',
-            'title': 'Project Information',
+            'title': 'Project Information'|trans,
             'url': path('fm_project_widget_info', {id: entity.id})
         }) }}
     {% endset %}
 
     {% set dataBlocks = [{
-        'title': 'General',
+        'title': 'General'|trans,
         'class': 'active',
         'subblocks': [
             {'data' : [projectInformationWidget] },
@@ -50,7 +50,7 @@
     }] %}
 
     {% set dataBlocks = dataBlocks|merge([{
-        'title' : 'Resources',
+        'title' : 'fm.nav.resource.plural_label'|trans,
         'subblocks': [{
             'title' : null,
             'useSpan': false,

@@ -1,14 +1,14 @@
 {% extends "OroUIBundle:actions:index.html.twig" %}
 {% import 'OroUIBundle::macros.html.twig' as UI %}
 {% set gridName = 'fm-project-grid' %}
-{% set pageTitle = 'Projects' %}
+{% set pageTitle = 'fm.nav.project.plural_label'|trans %}
 
 {% block navButtons %}
     {% if is_granted('fm_project_create') %}
         <div class="btn-group">
             {{ UI.addButton({
                 'path' : path('fm_project_create'),
-                'entity_label': 'Project'
+                'entity_label': 'fm.nav.project.label'|trans
             }) }}
         </div>
     {% endif %}
