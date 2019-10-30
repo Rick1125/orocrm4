@@ -14,13 +14,14 @@ use FM\Bundle\ContractBundle\Entity\Contract;
 use FM\Bundle\ProjectBundle\Migrations\Schema\FMProjectBundle;
 use Oro\Bundle\EntityConfigBundle\Migration\UpdateEntityConfigEntityValueQuery;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
+use Oro\Bundle\MigrationBundle\Migration\OrderedMigrationInterface;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyMethods)
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  */
-class FMContractBundle implements Installation
+class FMContractBundle implements Installation, OrderedMigrationInterface
 {
     const TABLE = 'fm_contract';
     /**

@@ -13,13 +13,14 @@ use Doctrine\DBAL\Schema\SchemaException;
 use FM\Bundle\ResourceBundle\Entity\Resource;
 use Oro\Bundle\EntityConfigBundle\Migration\UpdateEntityConfigEntityValueQuery;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
+use Oro\Bundle\MigrationBundle\Migration\OrderedMigrationInterface;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyMethods)
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  */
-class FMResourceBundle implements Installation
+class FMResourceBundle implements Installation, OrderedMigrationInterface
 {
     const TABLE_RESOURCE = 'fm_resource';
     const TABLE_CHANNEL = 'fm_channel';

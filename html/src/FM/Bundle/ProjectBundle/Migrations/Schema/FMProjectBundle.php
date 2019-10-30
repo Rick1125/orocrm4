@@ -14,13 +14,14 @@ use FM\Bundle\ProjectBundle\Entity\Project;
 use FM\Bundle\ResourceBundle\Migrations\Schema\FMResourceBundle;
 use Oro\Bundle\EntityConfigBundle\Migration\UpdateEntityConfigEntityValueQuery;
 use Oro\Bundle\MigrationBundle\Migration\Installation;
+use Oro\Bundle\MigrationBundle\Migration\OrderedMigrationInterface;
 use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyMethods)
  * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  */
-class FMProjectBundle implements Installation
+class FMProjectBundle implements Installation, OrderedMigrationInterface
 {
     const TABLE = 'fm_project';
     /**

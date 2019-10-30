@@ -5,7 +5,7 @@
  * Date: 2017/11/27
  * Time: 12:39
  */
-namespace FM\ResourceBundle\Controller\Api\Rest;
+namespace FM\Bundle\ResourceBundle\Controller\Api\Rest;
 
 use FOS\RestBundle\Controller\Annotations\NamePrefix;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
