@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjectController extends AbstractController
 {
     /**
-     * @BaseRoute("/", name="fm_project_index")
+     * @Route("/", name="fm_project_index")
      * @AclAncestor("fm_project_view")
      * @Template()
      */
