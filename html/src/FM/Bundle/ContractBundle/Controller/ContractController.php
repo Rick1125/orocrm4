@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class ContractController
  *
  * @Route("/contract")
- * @package FM\ContractBundle\Controller
+ * @package FM\Bundle\ContractBundle\Controller
  */
 class ContractController extends AbstractController
 {

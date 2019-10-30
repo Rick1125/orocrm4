@@ -1,0 +1,4 @@
+fm_contract_bundle:
+    resource:     "@FMContractBundle/Controller"
+    type:         annotation
+    prefix:       /contract
