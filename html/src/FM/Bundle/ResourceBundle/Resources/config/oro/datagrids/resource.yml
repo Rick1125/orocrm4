@@ -117,13 +117,8 @@ datagrids:
                     type: number-range
                     data_name: r.quoteRepost
                 person:
-                    type: single_choice
+                    type: boolean
                     data_name: c.person
-                    options:
-                        field_options:
-                            choices:
-                                'Yes': 1
-                                'No': 0
                 platformName:
                     type: entity
                     data_name: r.platform
