@@ -90,6 +90,8 @@ datagrids:
                     data_name: r.quoteRepost
                 createdAt:
                     data_name: r.createdAt
+                updatedAt:
+                    data_name: r.updatedAt
             default:
                 createdAt: DESC
         filters:
@@ -120,8 +122,8 @@ datagrids:
                     options:
                         field_options:
                             choices:
-                                'Yes': true
-                                'No': false
+                                1: true
+                                0: false
                 platformName:
                     type: entity
                     data_name: r.platform

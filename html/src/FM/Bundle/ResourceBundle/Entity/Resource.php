@@ -186,6 +186,9 @@ class Resource extends ExtendResource
      *              "header"="Quote Direct",
      *              "order"=45
      *          },
+     *          "dataaudit"={
+     *              "auditable"=true
+     *          },
      *          "security"={
      *              "permissions"="CREATE",
      *          }
@@ -207,6 +210,9 @@ class Resource extends ExtendResource
     *              "header"="Quote Repost",
      *              "order"=55
      *          },
+     *          "dataaudit"={
+     *              "auditable"=true
+     *          },
      *          "security"={
      *              "permissions"="CREATE",
      *          }
@@ -223,6 +229,9 @@ class Resource extends ExtendResource
      *      defaultValues={
      *          "entity"={
      *              "label"="fm.entity.follower.label"
+     *          },
+     *          "dataaudit"={
+     *              "auditable"=true
      *          },
      *          "importexport"={
      *              "header"="Follower",
@@ -246,6 +255,9 @@ class Resource extends ExtendResource
      *              "header"="Cost Direct",
      *              "order"=40
      *          },
+     *          "dataaudit"={
+     *              "auditable"=true
+     *          },
      *          "security"={
      *              "permissions"="CREATE",
      *          }
@@ -266,6 +278,9 @@ class Resource extends ExtendResource
      *          "importexport"={
      *              "header"="Cost Repost",
      *              "order"=50
+     *          },
+     *          "dataaudit"={
+     *              "auditable"=true
      *          },
      *          "security"={
      *              "permissions"="CREATE",

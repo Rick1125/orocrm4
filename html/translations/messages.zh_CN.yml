@@ -26,6 +26,8 @@ fm:
             label: '更新者'
         organization:
             label: '公司'
+        id:
+            label: '序号'
         owner:
             label: '拥有者'
     nav:
