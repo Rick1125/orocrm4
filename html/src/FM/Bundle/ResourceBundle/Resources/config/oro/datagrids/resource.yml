@@ -12,6 +12,7 @@ datagrids:
                     - c.name as channelName
                     - c.person as person
                     - p.name as platformName
+                    - c.id as channel
                 from:
                     - { table: '%fm.entity.resource.class%', alias: r }
                 join:
@@ -47,7 +48,8 @@ datagrids:
                         view_options:
                             value_field_name: channel
             platformName:
-                label:         fm.entity.platform_name.label
+                label:         fm.entity.platform.label
+                frontend_type: relation
             follower:
                 label:         fm.entity.follower.label
             quoteDirect:
