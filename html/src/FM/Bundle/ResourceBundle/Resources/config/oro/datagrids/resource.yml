@@ -122,8 +122,8 @@ datagrids:
                     options:
                         field_options:
                             choices:
-                                1: true
-                                0: false
+                                'Yes': 1
+                                'No': 0
                 platformName:
                     type: entity
                     data_name: r.platform
