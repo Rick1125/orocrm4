@@ -1,5 +1,4 @@
 parameters:
-    fm.resource.entity.class: FM\Bundle\ResourceBundle\Entity\Resource
     fm.importexport.processor.import.bu_fill.class: FM\Bundle\ResourceBundle\ImportExport\Processor\FillBuProcessor
     fm.importexport.strategy.resource.add_bu.class: FM\Bundle\ResourceBundle\ImportExport\Strategy\AddBuStrategy
 
@@ -29,8 +28,8 @@ services:
             - [setDataConverter, ['@fm.importexport.data_converter.resource']]
             - [setStrategy, ['@fm.importexport.strategy.resource.add_or_replace']]
         tags:
-            - { name: oro_importexport.processor, type: import, entity: '%fm.resource.entity.class%', alias: fm.resource.add_or_replace }
-            - { name: oro_importexport.processor, type: import_validation, entity: '%fm.resource.entity.class%', alias: fm.resource.add_or_replace }
+            - { name: oro_importexport.processor, type: import, entity: '%fm.entity.resource.class%', alias: fm.resource.add_or_replace }
+            - { name: oro_importexport.processor, type: import_validation, entity: '%fm.entity.resource.class%', alias: fm.resource.add_or_replace }
 
     # Export processor
     fm.importexport.processor.export:
@@ -38,14 +37,14 @@ services:
         calls:
             - [setDataConverter, ['@fm.importexport.data_converter.resource']]
         tags:
-            - { name: oro_importexport.processor, type: export, entity: '%fm.resource.entity.class%', alias: fm.resource }
+            - { name: oro_importexport.processor, type: export, entity: '%fm.entity.resource.class%', alias: fm.resource }
 
     fm.importexport.processor.export_template:
         parent: oro_importexport.processor.export_abstract
         calls:
             - [setDataConverter, ['@fm.importexport.template_fixture.data_converter.resource']]
         tags:
-            - { name: oro_importexport.processor, type: export_template, entity: '%fm.resource.entity.class%', alias: fm.resource }
+            - { name: oro_importexport.processor, type: export_template, entity: '%fm.entity.resource.class%', alias: fm.resource }
 
     # Helper
     fm.importexport.configuration_provider.contact:

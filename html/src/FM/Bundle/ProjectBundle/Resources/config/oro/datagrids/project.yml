@@ -1,6 +1,6 @@
 datagrids:
     fm-project-grid:
-        extended_entity_name: '%fm.project.entity.class%'
+        extended_entity_name: '%fm.entity.project.class%'
         acl_resource: fm_project_view
         inline_editing:
             enable: true
@@ -10,7 +10,7 @@ datagrids:
                 select:
                     - p
                 from:
-                    - { table: '%fm.project.entity.class%', alias: p }
+                    - { table: '%fm.entity.project.class%', alias: p }
         columns:
             id:
                 label:         ID
@@ -108,7 +108,7 @@ datagrids:
                     - r
                     - c.name as channelName
                 from:
-                    - { table: '%fm.resource.entity.class%', alias: r }
+                    - { table: '%fm.entity.resource.class%', alias: r }
                 join:
                     left:
                         - { join: r.channel, alias: c }

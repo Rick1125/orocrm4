@@ -1,0 +1,2 @@
+parameters:
+    fm.entity.contract.class:  'FM\Bundle\ContractBundle\Entity\Contract'

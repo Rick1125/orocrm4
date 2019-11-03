@@ -1,6 +1,6 @@
 datagrids:
     fm-result-grid:
-        extended_entity_name: '%fm.result.entity.class%'
+        extended_entity_name: '%fm.entity.result.class%'
         acl_resource: fm_resource_view
         inline_editing:
             enable: true
@@ -10,7 +10,7 @@ datagrids:
                 select:
                     - r
                 from:
-                    - { table: '%fm.result.entity.class%', alias: r }
+                    - { table: '%fm.entity.result.class%', alias: r }
         columns:
             id:
                 label:         ID

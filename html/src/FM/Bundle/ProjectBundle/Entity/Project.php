@@ -36,7 +36,7 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *          },
  *          "security"={
  *              "type"="ACL",
- *              "group_name"="",
+ *              "group_name"="Resource",
  *              "field_acl_supported"="true",
  *              "category"="fm_management"
  *          },

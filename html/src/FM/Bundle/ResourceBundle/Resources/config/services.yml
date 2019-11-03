@@ -2,16 +2,17 @@ imports:
     - { resource: mass_actions.yml }
 
 parameters:
-    fm.platform.entity.class: 'FM\Bundle\ResourceBundle\Entity\Platform'
-    fm.channel.entity.class:  'FM\Bundle\ResourceBundle\Entity\Channel'
-    fm.resource.entity.class: 'FM\Bundle\ResourceBundle\Entity\Resource'
+    fm.entity.platform.class: 'FM\Bundle\ResourceBundle\Entity\Platform'
+    fm.entity.channel.class:  'FM\Bundle\ResourceBundle\Entity\Channel'
+    fm.entity.resource.class: 'FM\Bundle\ResourceBundle\Entity\Resource'
+    fm.entity.result.class:   'FM\Bundle\ResourceBundle\Entity\Result'
 
 services:
     fm.api.manager:
         class: Oro\Bundle\SoapBundle\Entity\Manager\ApiEntityManager
         parent: oro_soap.manager.entity_manager.abstract
         arguments:
-            - '%fm.resource.entity.class%'
+            - '%fm.entity.resource.class%'
             - '@doctrine.orm.entity_manager'
 
 #    fm.listener.navigation_listener:

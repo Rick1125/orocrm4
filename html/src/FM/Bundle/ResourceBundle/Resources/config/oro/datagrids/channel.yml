@@ -1,6 +1,6 @@
 datagrids:
     fm-channel-grid:
-        extended_entity_name: '%fm.channel.entity.class%'
+        extended_entity_name: '%fm.entity.channel.class%'
         acl_resource: fm_resource_view
         inline_editing:
             enable: true
@@ -10,7 +10,7 @@ datagrids:
                 select:
                     - c
                 from:
-                    - { table: '%fm.channel.entity.class%', alias: c }
+                    - { table: '%fm.entity.channel.class%', alias: c }
         columns:
             id:
                 label:         oro.channel.id.label

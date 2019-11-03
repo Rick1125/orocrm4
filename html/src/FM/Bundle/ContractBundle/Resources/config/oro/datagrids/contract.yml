@@ -94,7 +94,7 @@ datagrids:
                 select:
                     - p
                 from:
-                    - { table: '%fm.project.entity.class%', alias: p }
+                    - { table: '%fm.entity.project.class%', alias: p }
 
         columns: []
 

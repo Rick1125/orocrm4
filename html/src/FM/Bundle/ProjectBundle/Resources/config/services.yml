@@ -1,3 +1,2 @@
 parameters:
-    fm.project.entity.class:  'FM\Bundle\ProjectBundle\Entity\Project'
-    fm.result.entity.class:   'FM\Bundle\ProjectBundle\Entity\Result'
+    fm.entity.project.class:  'FM\Bundle\ProjectBundle\Entity\Project'
