@@ -4,10 +4,10 @@ parameters:
 
 services:
     # import form type extension
-    fm.importexport.resource.form_type_extension:
-        class: FM\Bundle\ResourceBundle\Form\Extension\BUImportTypeExtension
-        tags:
-            - { name: form.type_extension, extended_type: oro_importexport_import, alias: oro_importexport_import }
+#    fm.importexport.resource.form_type_extension:
+#        class: FM\Bundle\ResourceBundle\Form\Extension\BUImportTypeExtension
+#        tags:
+#            - { name: form.type_extension, extended_type: oro_importexport_import, alias: oro_importexport_import }
 
     # Strategy
     fm.importexport.strategy.resource.add_or_replace:

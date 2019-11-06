@@ -5,7 +5,7 @@
 
 {% block navButtons %}
     {% include 'OroImportExportBundle:ImportExport:buttons_from_configuration.html.twig' with {
-        'alias': 'fm.resource'
+        'alias': 'fm_resource'
     } %}
 
     {% if is_granted('fm_resource_create') %}
