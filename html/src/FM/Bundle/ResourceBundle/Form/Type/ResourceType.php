@@ -36,11 +36,11 @@ class ResourceType extends AbstractType
             ->add('link', TextType::class, ['required' => true, 'label' => 'Link'])
             ->add('contactName', TextType::class, ['required' => false, 'label' => 'Contact Name'])
             ->add('follower', TextType::class, ['required' => false, 'label' => 'Followers(Ten-Thousand)'])
-            ->add('quoteDirect', OroMoneyType::class, ['required' => false, 'label' => 'Quote Direct'])
-            ->add('quoteRepost', OroMoneyType::class, ['required' => false, 'label' => 'Quote Repost'])
-            ->add('costDirect', OroMoneyType::class, ['required' => false, 'label' => 'Cost Direct'])
-            ->add('costRepost', OroMoneyType::class, [ 'required' => false, 'label' => 'Cost Repost'])
-            ->add('discount', OroPercentType::class, ['required' => false, 'label' => 'Discount'])
+            ->add('quoteDirect', OroMoneyType::class, ['required' => false, 'label' => 'Quote Direct', 'empty_data' => 0])
+            ->add('quoteRepost', OroMoneyType::class, ['required' => false, 'label' => 'Quote Repost', 'empty_data' => 0])
+            ->add('costDirect', OroMoneyType::class, ['required' => false, 'label' => 'Cost Direct', 'empty_data' => 0])
+            ->add('costRepost', OroMoneyType::class, [ 'required' => false, 'label' => 'Cost Repost', 'empty_data' => 0])
+            ->add('discount', OroPercentType::class, ['required' => false, 'label' => 'Discount', 'empty_data' => 1])
             ->add('memo', OroRichTextType::class, ['required' => false, 'label' => 'Resource Memo'])
         ;
     }
