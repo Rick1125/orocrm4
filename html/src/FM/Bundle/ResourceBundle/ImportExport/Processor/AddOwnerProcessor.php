@@ -24,7 +24,7 @@ class AddOwnerProcessor extends ImportProcessor
             if ($platform) {
                 $entity->setPlatform($platform);
             }
-            $this->strategy->upsertChannel($entity);
+//            $this->strategy->upsertChannel($entity);
             $entity->setOwner($user);
             $entity->setLinkHash(md5($entity->getLink()));
             if ($entity->getQuoteDirect() <= 0 && $entity->getDiscount() > 0) {
