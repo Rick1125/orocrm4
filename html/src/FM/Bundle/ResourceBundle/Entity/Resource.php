@@ -580,12 +580,12 @@ class Resource extends ExtendResource
     }
 
     /**
-     * @param float $quote
+     * @param $quote
      * @return Resource
      */
-    public function setQuoteDirect(float $quote)
+    public function setQuoteDirect($quote)
     {
-        $this->quoteDirect = $quote;
+        $this->quoteDirect = (float) $quote;
         return $this;
     }
 
@@ -606,12 +606,12 @@ class Resource extends ExtendResource
     }
 
     /**
-     * @param float $quote
+     * @param $quote
      * @return Resource
      */
-    public function setQuoteRepost(float $quote)
+    public function setQuoteRepost($quote)
     {
-        $this->quoteRepost = $quote;
+        $this->quoteRepost = (float) $quote;
         return $this;
     }
 
@@ -624,12 +624,12 @@ class Resource extends ExtendResource
     }
 
     /**
-     * @param float $cost
+     * @param $cost
      * @return Resource
      */
-    public function setCostDirect(float $cost)
+    public function setCostDirect($cost)
     {
-        $this->costDirect = $cost;
+        $this->costDirect = (float) $cost;
         return $this;
     }
 
@@ -642,12 +642,12 @@ class Resource extends ExtendResource
     }
 
     /**
-     * @param float $cost
+     * @param $cost
      * @return Resource
      */
-    public function setCostRepost(float $cost)
+    public function setCostRepost($cost)
     {
-      $this->costRepost = $cost;
+      $this->costRepost = (float) $cost;
       return $this;
     }
 
