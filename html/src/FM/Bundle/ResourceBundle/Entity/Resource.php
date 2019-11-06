@@ -159,7 +159,7 @@ class Resource extends ExtendResource
     /**
      * @var float
      *
-     * @ORM\Column(name="score", type="decimal", scale=2, precision=10)
+     * @ORM\Column(name="score", type="decimal", scale=2, precision=10, options={"default": 0})
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
@@ -245,7 +245,7 @@ class Resource extends ExtendResource
     /**
      * @var float
      *
-     * @ORM\Column(name="cost_direct", type="decimal", scale=2, precision=10)
+     * @ORM\Column(name="cost_direct", type="decimal", scale=2, precision=10, options={"default": 0})
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
@@ -269,7 +269,7 @@ class Resource extends ExtendResource
     /**
      * @var float
      *
-     * @ORM\Column(name="cost_repost", type="decimal", scale=2, precision=10)
+     * @ORM\Column(name="cost_repost", type="decimal", scale=2, precision=10, options={"default": 0})
      * @ConfigField(
      *      defaultValues={
      *          "entity"={
