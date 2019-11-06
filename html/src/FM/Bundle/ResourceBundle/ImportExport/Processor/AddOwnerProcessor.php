@@ -10,7 +10,7 @@ namespace FM\Bundle\ResourceBundle\ImportExport\Processor;
 use FM\Bundle\ResourceBundle\Entity\Resource;
 use Oro\Bundle\ImportExportBundle\Processor\ImportProcessor;
 
-class FillBuProcessor extends ImportProcessor
+class AddOwnerProcessor extends ImportProcessor
 {
     public function process($item)
     {
@@ -18,14 +18,14 @@ class FillBuProcessor extends ImportProcessor
         $entity = parent::process($item);
 
         if ($entity) {
-            $buId = $this->context->getOption('owner');
-            $businessUnit = $this->strategy->getBusinessUnit($buId);
+            $userId = $this->context->getOption('owner');
+            $user = $this->strategy->getOwnerUser($userId);
             $platform = $this->strategy->getPlatform($entity->getLink());
             if ($platform) {
                 $entity->setPlatform($platform);
             }
             $this->strategy->upsertChannel($entity);
-            $entity->setOwner($businessUnit);
+            $entity->setOwner($user);
             $entity->setLinkHash(md5($entity->getLink()));
             if ($entity->getQuoteDirect() <= 0 && $entity->getDiscount() > 0) {
                 $entity->setQuoteDirect($entity->getCostDirect() * $entity->getDiscount() * Resource::QUOTE_INDEX);
@@ -34,7 +34,6 @@ class FillBuProcessor extends ImportProcessor
                 $entity->setQuoteRepost($entity->getCostRepost() * $entity->getDiscount() * Resource::QUOTE_INDEX);
             }
             $entity->setUpdatedAt(new \DateTime('now'));
-//            $entity->setCreatedBy($user);
         }
 
         return $entity;

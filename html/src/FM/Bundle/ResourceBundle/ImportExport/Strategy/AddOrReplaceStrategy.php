@@ -14,13 +14,13 @@ use FM\Bundle\ResourceBundle\Entity\Resource;
 use Oro\Bundle\ImportExportBundle\Strategy\Import\ConfigurableAddOrReplaceStrategy;
 use Oro\Bundle\UserBundle\Entity\User;
 
-class AddBuStrategy extends ConfigurableAddOrReplaceStrategy
+class AddOrReplaceStrategy extends ConfigurableAddOrReplaceStrategy
 {
     /**
      * @param $id
      * @return null|object
      */
-    public function getBusinessUnit($id)
+    public function getOwnerUser($id)
     {
         $id = $id?:1;
         $em = $this->databaseHelper;

@@ -1,6 +1,6 @@
 parameters:
-    fm.importexport.processor.import.bu_fill.class: FM\Bundle\ResourceBundle\ImportExport\Processor\FillBuProcessor
-    fm.importexport.strategy.resource.add_bu.class: FM\Bundle\ResourceBundle\ImportExport\Strategy\AddBuStrategy
+    fm.importexport.processor.import.processor.class: FM\Bundle\ResourceBundle\ImportExport\Processor\AddOwnerProcessor
+    fm.importexport.strategy.resource.add_bu.class: FM\Bundle\ResourceBundle\ImportExport\Strategy\AddOrReplaceStrategy
 
 services:
     # import form type extension
@@ -21,9 +21,9 @@ services:
         parent: oro_importexport.data_converter.template_fixture.configurable
 
     # Import processor
-    fm.importexport.processor.import.add_or_replace:
+    fm.importexport.processor.import:
         parent: oro_importexport.processor.import_abstract
-        class: '%fm.importexport.processor.import.bu_fill.class%'
+        class: '%fm.importexport.processor.import.processor.class%'
         calls:
             - [setDataConverter, ['@fm.importexport.data_converter.resource']]
             - [setStrategy, ['@fm.importexport.strategy.resource.add_or_replace']]
@@ -37,19 +37,17 @@ services:
         calls:
             - [setDataConverter, ['@fm.importexport.data_converter.resource']]
         tags:
-            - { name: oro_importexport.processor, type: export, entity: '%fm.entity.resource.class%', alias: fm.resource }
+            - { name: oro_importexport.processor, type: export, entity: '%fm.entity.resource.class%', alias: fm_resource }
 
     fm.importexport.processor.export_template:
         parent: oro_importexport.processor.export_abstract
         calls:
             - [setDataConverter, ['@fm.importexport.template_fixture.data_converter.resource']]
         tags:
-            - { name: oro_importexport.processor, type: export_template, entity: '%fm.entity.resource.class%', alias: fm.resource }
+            - { name: oro_importexport.processor, type: export_template, entity: '%fm.entity.resource.class%', alias: fm_resource }
 
     # Helper
-    fm.importexport.configuration_provider.contact:
+    fm.importexport.configuration_provider.resource:
         class: 'FM\Bundle\ResourceBundle\ImportExport\Configuration\ResourceImportExportConfigurationProvider'
-        arguments:
-            - '@translator'
         tags:
-            - { name: oro_importexport.configuration, alias: fm.resource }
+            - { name: oro_importexport.configuration, alias: fm_resource }

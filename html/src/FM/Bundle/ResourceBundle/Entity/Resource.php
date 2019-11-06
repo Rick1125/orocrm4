@@ -312,17 +312,6 @@ class Resource extends ExtendResource
      * @var string
      *
      * @ORM\Column(name="channel_name", type="string", length=179)
-     * @ConfigField(
-     *      defaultValues={
-     *          "entity"={
-     *              "label"="fm.entity.channel_name.label"
-     *          },
-     *          "importexport"={
-     *              "header"="Channel Name",
-     *              "order"=60
-     *          }
-     *      }
-     * )
      */
     private $channelName = '';
 
@@ -375,6 +364,18 @@ class Resource extends ExtendResource
      *
      * @ORM\ManyToOne(targetEntity="Channel", inversedBy="resources")
      * @ORM\JoinColumn(name="channel_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ConfigField(
+     *      defaultValues={
+     *          "entity"={
+     *              "label"="fm.entity.channel.label"
+     *          },
+     *          "importexport"={
+     *              "header"="Channel Name",
+     *              "order"=60,
+     *              "full"=false,
+     *          }
+     *      }
+     * )
      */
     protected $channel;
 
