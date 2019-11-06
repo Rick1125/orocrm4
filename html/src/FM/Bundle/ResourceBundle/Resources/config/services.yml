@@ -9,6 +9,7 @@ parameters:
 
 services:
     fm.api.manager:
+        public: true
         class: Oro\Bundle\SoapBundle\Entity\Manager\ApiEntityManager
         parent: oro_soap.manager.entity_manager.abstract
         arguments:
