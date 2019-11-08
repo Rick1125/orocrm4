@@ -1,2 +1,11 @@
 parameters:
     fm.entity.project.class:  'FM\Bundle\ProjectBundle\Entity\Project'
+
+services:
+    fm.api.manager.project:
+        public: true
+        class: Oro\Bundle\SoapBundle\Entity\Manager\ApiEntityManager
+        parent: oro_soap.manager.entity_manager.abstract
+        arguments:
+            - '%fm.entity.project.class%'
+            - '@doctrine.orm.entity_manager'

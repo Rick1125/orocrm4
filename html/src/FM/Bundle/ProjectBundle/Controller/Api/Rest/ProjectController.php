@@ -37,7 +37,7 @@ class ProjectController extends RestController
      */
     public function getManager()
     {
-        return $this->get('fm.api.manager');
+        return $this->get('fm.api.manager.project');
     }
 
     /**
