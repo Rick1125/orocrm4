@@ -9,7 +9,7 @@ namespace FM\Bundle\ProjectBundle\Controller\Api\Rest;
 
 use FOS\RestBundle\Controller\Annotations\NamePrefix;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
-use Oro\Bundle\SecurityBundle\Annotation\Acl;
+use Oro\Bundle\SecurityBundle\Annotation\AclAncestor;
 use Oro\Bundle\SoapBundle\Controller\Api\Rest\RestController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,12 +25,7 @@ class ProjectController extends RestController
      * @param int $id Resource id
      *
      * @return Response
-     * @Acl(
-     *      id="fm_project_delete",
-     *      type="entity",
-     *      class="FMResourceBundle:Project",
-     *      permission="DELETE"
-     * )
+     * @AclAncestor("fm_project_delete")
      */
     public function deleteAction($id)
     {

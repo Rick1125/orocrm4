@@ -1,13 +1,17 @@
 acls:
     fm_project_view:
         type: entity
-        class: FMResourceBundle:Project
+        class: FMProjectBundle:Project
         permission: VIEW
     fm_project_create:
         type: entity
-        class: FMResourceBundle:Project
+        class: FMProjectBundle:Projectj
         permission: CREATE
     fm_project_update:
         type: entity
-        class: FMResourceBundle:Project
+        class: FMProjectBundle:Project
         permission: EDIT
+    fm_project_delete:
+        type: entity
+        class: FMProjectBundle:Project
+        permission: DELETE
