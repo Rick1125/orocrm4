@@ -1,3 +1,2 @@
 imports:
     - { resource: datagrids/project.yml }
-    - { resource: datagrids/result.yml }

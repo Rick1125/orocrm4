@@ -89,7 +89,7 @@ class Project extends ExtendProject
      * @ConfigField(
      *      defaultValues={
      *          "security"={
-     *              "permissions"="VIEW",
+     *              "permissions"="VIEW,CREATE,MODIFY",
      *          }
      *      }
      * )
@@ -103,9 +103,7 @@ class Project extends ExtendProject
      * @ConfigField(
      *      defaultValues={
      *          "security"={
-     *              "type"="ACL",
-     *              "permissions"="VIEW",
-     *              "group_name"="Project"
+     *              "permissions"="VIEW,CREATE,MODIFY",
      *          }
      *      }
      * )

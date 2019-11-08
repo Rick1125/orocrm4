@@ -13,11 +13,12 @@ datagrids:
                     - { table: '%fm.entity.project.class%', alias: p }
         columns:
             id:
-                label:         ID
+                label:         oro.account.id.label
+                renderable:    false
             name:
-                label:         Name
+                label:         fm.entity.name.label
             status:
-                label:         Status
+                label:         fm.entity.status.label
                 type:          twig
                 frontend_type: html
                 template:      FMResourceBundle::Datagrid/Property/status_badge.html.twig
@@ -28,10 +29,10 @@ datagrids:
                 label:         'Quote'
                 frontend_type: currency
             createdAt:
-                label:         'Created At'
+                label:         oro.ui.created_at
                 frontend_type: datetime
-            launchedAt:
-                label:         'Launched At'
+            updatedAt:
+                label:         oro.ui.updated_at
                 frontend_type: datetime
         sorters:
             columns:
