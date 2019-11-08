@@ -84,9 +84,9 @@ class FMProjectBundle implements Installation, OrderedMigrationInterface
         $table->addColumn('name', 'string', ['length' => 255]);
         $table->addColumn('description', 'text', ['notnull' => false]);
         $table->addColumn('status', 'string', ['length' => 15]);
-        $table->addColumn('quote', 'decimal', ['scale' => 2]);
-        $table->addColumn('budget', 'decimal', ['scale' => 2]);
-        $table->addColumn('profit_rate', 'decimal', ['precision' => 6, 'scale' => 2]);
+        $table->addColumn('quote', 'decimal', ['scale' => 2, 'default' => 0]);
+        $table->addColumn('budget', 'decimal', ['scale' => 2, 'default' => 0]);
+        $table->addColumn('profit_rate', 'decimal', ['precision' => 6, 'scale' => 2, 'default' => 0]);
         $table->addColumn('launched_at', 'datetime', []);
         $table->addColumn('expired_at', 'datetime', ['notnull' => false]);
         $table->addColumn('created_at', 'datetime', []);

@@ -9,8 +9,15 @@
                 {{ UI.renderProperty('Name', project.name) }}
                 {{ UI.renderProperty('Assigned To', project.assignedTo.username) }}
                 {{ UI.renderProperty('Status', project.status|capitalize) }}
-                {{ UI.renderProperty('Quote', project.quote|oro_format_number('currency')) }}
-                {{ UI.renderProperty('Budget', project.budget|oro_format_number('currency')) }}
+                {% if is_granted('VIEW', project, 'budget') %}
+                    {{ UI.renderProperty('Budget', project.budget|oro_format_number('currency')) }}
+                {% endif %}
+                {% if is_granted('VIEW', project, 'quote') %}
+                    {{ UI.renderProperty('Quote', project.quote|oro_format_number('currency')) }}
+                {% endif %}
+                {% if is_granted('VIEW', project, 'profitRate') %}
+                    {{ UI.renderProperty('ProfitRate', project.profitRate|oro_format_percent) }}
+                {% endif %}
             </div>
             <div class="responsive-block">
                 {{ UI.renderProperty('Launched At', project.launchedAt|date) }}

@@ -82,14 +82,14 @@
                     form_row(form.status),
                     form_row(form.budget),
                     form_row(form.quote),
-                ]
+                    form_row(form.profitRate),
+            ]
             },
             {
                 'title': '',
                 'data': [
                     form_row(form.launchedAt),
                     form_row(form.expiredAt),
-                    form_row(form.profitRate),
                     form_row(form.description),
                     form_widget(form.appendResources, {'id': 'projectAppendResources'}),
                     form_widget(form.removeResources, {'id': 'projectRemoveResources'}),

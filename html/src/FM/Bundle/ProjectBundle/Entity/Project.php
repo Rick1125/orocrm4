@@ -36,16 +36,16 @@ use Oro\Bundle\EntityConfigBundle\Metadata\Annotation\ConfigField;
  *          },
  *          "security"={
  *              "type"="ACL",
+ *              "permissions"="All",
  *              "group_name"="Resource",
- *              "field_acl_supported"="true",
- *              "category"="fm_management"
+ *              "field_acl_supported"="true"
  *          },
  *          "dataaudit"={
  *              "auditable"=true
  *          },
  *          "form"={
  *              "form_type"="FM\ProjectBundle\Form\Type\ProjectType",
- *              "grid_name"="fm-project-grid",
+ *              "grid_name"="fm-project-grid"
  *          },
  *          "grid"={
  *              "default"="fm-project-grid"
@@ -87,6 +87,11 @@ class Project extends ExtendProject
      *
      * @ORM\Column(name="quote", type="decimal", precision=10, scale=2)
      * @ConfigField(
+     *      defaultValues={
+     *          "security"={
+     *              "permissions"="VIEW;CREATE;EDIT",
+     *          },
+     *      }
      * )
      */
     private $quote;
@@ -96,6 +101,11 @@ class Project extends ExtendProject
      *
      * @ORM\Column(name="budget", type="decimal", precision=10, scale=2)
      * @ConfigField(
+     *      defaultValues={
+     *          "security"={
+     *              "permissions"="VIEW;CREATE;EDIT",
+     *          },
+     *      }
      * )
      */
     private $budget;
@@ -105,6 +115,11 @@ class Project extends ExtendProject
      *
      * @ORM\Column(name="profit_rate", type="decimal", precision=6, scale=2)
      * @ConfigField(
+     *      defaultValues={
+     *          "security"={
+     *              "permissions"="VIEW;CREATE;EDIT",
+     *          },
+     *      }
      * )
      */
     private $profitRate;
