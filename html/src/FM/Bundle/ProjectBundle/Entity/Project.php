@@ -87,11 +87,6 @@ class Project extends ExtendProject
      *
      * @ORM\Column(name="quote", type="decimal", precision=10, scale=2)
      * @ConfigField(
-     *      defaultValues={
-     *          "security"={
-     *              "permissions"="VIEW,CREATE,MODIFY",
-     *          }
-     *      }
      * )
      */
     private $quote;
@@ -101,11 +96,6 @@ class Project extends ExtendProject
      *
      * @ORM\Column(name="budget", type="decimal", precision=10, scale=2)
      * @ConfigField(
-     *      defaultValues={
-     *          "security"={
-     *              "permissions"="VIEW,CREATE,MODIFY",
-     *          }
-     *      }
      * )
      */
     private $budget;
@@ -115,13 +105,6 @@ class Project extends ExtendProject
      *
      * @ORM\Column(name="profit_rate", type="decimal", precision=6, scale=2)
      * @ConfigField(
-     *      defaultValues={
-     *          "security"={
-     *              "type"="ACL",
-     *              "permissions"="VIEW",
-     *              "group_name"="Project"
-     *          }
-     *      }
      * )
      */
     private $profitRate;

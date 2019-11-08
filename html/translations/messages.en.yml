@@ -10,6 +10,8 @@ fm:
     project:
         entity_label: 'Project'
         entity_plural_label: 'Projects'
+        owner:
+            label: 'Owner'
     contract:
         entity_label: 'Contract'
         entity_plural_label: 'Contracts'

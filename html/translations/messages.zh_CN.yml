@@ -10,6 +10,8 @@ fm:
     project:
         entity_label: '项目'
         entity_plural_label: '项目'
+        owner:
+            label: '负责人'
     contract:
         entity_label: '合同'
         entity_plural_label: '合同'
