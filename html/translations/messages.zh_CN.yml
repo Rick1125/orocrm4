@@ -14,7 +14,7 @@ fm:
             label: '负责人'
         assigned_to.label: '指派给'
         budget.label: '预算'
-        craeted_by.label: '创建人'
+        created_by.label: '创建人'
         description.label: '项目描述'
         expired_at.label: '项目到期时间'
         launched_at.label: '项目开始时间'
@@ -25,7 +25,7 @@ fm:
         quote.label: '项目报价'
         resources.label: '资源'
         status.label: '状态'
-        updated_at.label: '更新时间'
+        updated_by.label: '更新者'
     contract:
         entity_label: '合同'
         entity_plural_label: '合同'
