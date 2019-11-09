@@ -22,11 +22,11 @@ datagrids:
                 type:          twig
                 frontend_type: html
                 template:      FMResourceBundle::Datagrid/Property/status_badge.html.twig
-            budget:
-                label:         'Budget'
-                frontend_type: currency
             quote:
-                label:         'Quote'
+                label:         fm.project.quote.label
+                frontend_type: currency
+            budget:
+                label:         fm.project.budget.label
                 frontend_type: currency
             createdAt:
                 label:         oro.ui.created_at
@@ -34,6 +34,12 @@ datagrids:
             updatedAt:
                 label:         oro.ui.updated_at
                 frontend_type: datetime
+        fields_acl:
+            columns:
+                quote:
+                    data_name: p.quote
+                budget:
+                    data_name: p.budget
         sorters:
             columns:
                 name:
