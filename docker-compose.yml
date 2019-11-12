@@ -9,7 +9,7 @@ services:
         volumes:
             - "./docker/nginx:/etc/nginx/conf.d"
             - "./docker/nginx/ssl:/etc/nginx/ssl"
-            - "./html/public:/var/www/html/public"
+            - "public:/var/www/html/public"
             - "./logs/nginx:/var/log/nginx"
     php:
         restart: always
@@ -20,8 +20,8 @@ services:
         volumes:
             - "./docker/php/auth.json:/root/.composer/auth.json"
             - "./docker/php/supervisor/conf.d:/etc/supervisor/conf.d"
-            - "./html/public:/var/www/html/public"
-            - "./html/vendor:/var/www/html/vendor"
+            - "public:/var/www/html/public"
+            - "vendor:/var/www/html/vendor"
             - "./html/translations:/var/www/html/translations"
             - "./html/src/FM:/var/www/html/src/FM"
             - "./html/src/Resources:/var/www/html/Resources"
@@ -40,3 +40,12 @@ services:
             - "./data:/var/lib/mysql"
             - "./logs/mysql:/var/log/mysql"
             - "./docker/mysql/mysql.conf.d:/etc/mysql/mysql.conf.d"
+volumes:
+    public:
+        driver: local-persist
+        driver_opts:
+            mountpoint: /data/html-data/public
+    vendor:
+        driver: local-persist
+        driver_opts:
+            mountpoint: /data/html-data/vendor
