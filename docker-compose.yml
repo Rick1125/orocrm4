@@ -29,6 +29,7 @@ services:
             - "./var:/var/www/html/var"
             - "./logs/supervisor:/var/log/supervisor"
     mysql:
+        restart: always
         image: mysql:5.7.21
         environment:
             - MYSQL_DATABASE=${PROJECT}
