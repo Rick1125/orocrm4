@@ -26,6 +26,7 @@ fm:
         resources.label: 'Resources'
         status.label: 'Status'
         updated_by.label: 'Updated By'
+        has_resource.label: 'Has Resource'
     contract:
         entity_label: 'Contract'
         entity_plural_label: 'Contracts'

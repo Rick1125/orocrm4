@@ -13,6 +13,8 @@ use FM\Bundle\ProjectBundle\Entity\Project;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProjectType extends AbstractType
@@ -24,6 +26,18 @@ class ProjectType extends AbstractType
     {
         $this->buildPlainFields($builder, $options);
         $this->buildRelationFields($builder, $options);
+
+        // set predefined accounts in case of creating a new contact
+        $builder->addEventListener(
+            FormEvents::POST_SET_DATA,
+            function (FormEvent $event) {
+                $project = $event->getData();
+                if ($project && $project instanceof Project && !$project->getId() && $project->hasResources()) {
+                    $form = $event->getForm();
+                    $form->get('appendResources')->setData($project->getResources());
+                }
+            }
+        );
     }
 
     /**
@@ -56,7 +70,7 @@ class ProjectType extends AbstractType
         $builder->add(
             'assignedTo',
             OrganizationUserAclSelectType::class,
-            ['required' => true, 'label' => 'Assigned To']
+            ['required' => true, 'label' => 'oro.contact.assigned_to.label']
         );
         $builder->add(
             'appendResources',

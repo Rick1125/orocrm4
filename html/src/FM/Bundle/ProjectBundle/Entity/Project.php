@@ -383,7 +383,7 @@ class Project extends ExtendProject
      * @param Resource $resource
      * @return Project
      */
-    public function removeProject(Resource $resource): Project
+    public function removeResource(Resource $resource): Project
     {
         if ($this->getResources()->contains($resource)) {
             $this->getResources()->remove($resource);
@@ -448,5 +448,12 @@ class Project extends ExtendProject
     {
         return $this->profitRate;
     }
-}
 
+    /**
+     * @return bool
+     */
+    public function hasResources()
+    {
+        return count($this->resources) > 0;
+    }
+}

@@ -26,6 +26,7 @@ fm:
         resources.label: '资源'
         status.label: '状态'
         updated_by.label: '更新者'
+        has_resource.label: '拥有资源'
     contract:
         entity_label: '合同'
         entity_plural_label: '合同'

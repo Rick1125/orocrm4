@@ -139,68 +139,71 @@ datagrids:
             query:
                 select:
                     - >
-                      (CASE WHEN (:project_id IS NOT NULL) THEN
+                      (CASE WHEN (:project IS NOT NULL) THEN
                         CASE WHEN r.id IN (:data_in) AND r.id NOT IN (:data_not_in)
                         THEN true ELSE false END
                       ELSE
                         CASE WHEN r.id IN (:data_in) AND r.id NOT IN (:data_not_in)
                         THEN true ELSE false END
-                      END) as assign_to_project
+                      END) as hasResource
             bind_parameters:
                 -
-                    name: project_id
+                    name: project
                     default: null
+                    type: integer
         columns:
-            assign_to_project:
-                label: 'Assigned to Project'
+            hasResource:
+                label: fm.project.has_resource.label
                 editable: true
                 frontend_type: boolean
             name:
-                label: 'Name'
+                label: fm.entity.name.label
             status:
-                label:         'Status'
+                label:         fm.entity.status.label
                 type:          twig
                 frontend_type: html
                 template:      'FMResourceBundle::Datagrid/Property/status_badge.html.twig'
             link:
-                label:         'Link'
+                label:         fm.entity.link.label
             channelName:
-                label:         'Channel'
+                label:         fm.entity.channel.label
             quoteDirect:
-                label:         'Quote Direct'
+                label:         fm.entity.quote_direct.label
                 frontend_type: currency
             quoteRepost:
-                label:         'Quote Repost'
+                label:         fm.entity.quote_repost.label
                 frontend_type: currency
         filters:
             columns:
-                assign_to_project:
+                hasResource:
                     type: boolean
-                    data_name: assign_to_project
+                    data_name: hasResource
                 name:
                     type: string
                     data_name: r.name
                 status:
-                    type: boolean
+                    type: single_choice
                     data_name: r.status
                     options:
                         field_options:
                             choices:
-                                disabled: Disabled
-                                enabled: Enabled
+                                disabled: 'Disabled'
+                                enabled: 'Enabled'
         sorters:
             multiple_sorting: true
             columns:
-                assign_to_project:
-                    data_name: assign_to_project
+                hasResource:
+                    data_name: hasResource
             default:
-                assign_to_project: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_DESC'
+                hasResource: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_DESC'
                 name: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
-
+        properties:
+            id: ~
         options:
+            entityHint: fm.resource.entity_plural_label
             rowSelection:
                 dataField: id
-                columnName: assign_to_project
+                columnName: hasResource
                 selectors:
-                    included: '#projectAppendResources'
-                    excluded: '#projectRemoveResources'
+                    included: "#appendResources"
+                    excluded: '#removeResources'

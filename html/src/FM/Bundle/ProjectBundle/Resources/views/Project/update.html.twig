@@ -83,16 +83,14 @@
                     form_row(form.budget),
                     form_row(form.quote),
                     form_row(form.profitRate),
-            ]
+                ]
             },
             {
                 'title': '',
                 'data': [
                     form_row(form.launchedAt),
                     form_row(form.expiredAt),
-                    form_row(form.description),
-                    form_widget(form.appendResources, {'id': 'projectAppendResources'}),
-                    form_widget(form.removeResources, {'id': 'projectRemoveResources'}),
+                    form_row(form.description)
                 ]
             }
         ]
@@ -118,7 +116,11 @@
         'subblocks': [{
             'title' : null,
             'useSpan': false,
-            'data' : [dataGrid.renderGrid(gridName, {project_id: entityId}, { cssClass: 'inner-grid' })]
+            'data' : [
+                form_widget(form.appendResources, {'id': 'appendResources'}),
+                form_widget(form.removeResources, {'id': 'removeResources'}),
+                dataGrid.renderGrid(gridName, { project: entityId ?: null }, { cssClass: 'inner-grid' })
+            ]
         }]
     }] ) %}
 
