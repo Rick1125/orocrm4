@@ -134,10 +134,12 @@ datagrids:
         filters: []
 
     project-resources-grid:
-        extends: project-relation-grid
         source:
+            type: orm
             query:
                 select:
+                    - r
+                    - c.name as channelName
                     - >
                       (CASE WHEN (:project IS NOT NULL) THEN
                         CASE WHEN r.id IN (:data_in) AND r.id NOT IN (:data_not_in)
@@ -146,6 +148,11 @@ datagrids:
                         CASE WHEN r.id IN (:data_in) AND r.id NOT IN (:data_not_in)
                         THEN true ELSE false END
                       END) as hasResource
+                from:
+                    - { table: '%fm.entity.resource.class%', alias: r }
+                join:
+                    left:
+                        - { join: r.channel, alias: c }
             bind_parameters:
                 -
                     name: project

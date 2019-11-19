@@ -35,6 +35,8 @@ fm:
         entity_plural_label: '资源'
         channel:
             label: '渠道'
+        channel_name:
+            label: '渠道名称'
         platform:
             label: '平台'
         created_by:

@@ -35,6 +35,8 @@ fm:
         entity_plural_label: 'Resources'
         channel:
             label: 'Channel'
+        channel_name:
+            label: 'Channel Name'
         platform:
             label: 'Platform'
         created_by:
