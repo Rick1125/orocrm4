@@ -4,7 +4,6 @@ services:
         restart: always
         image: nginx
         ports:
-             - 8888:80
              - 8889:443
         volumes:
             - "./docker/nginx:/etc/nginx/conf.d"
@@ -14,6 +13,9 @@ services:
     php:
         restart: always
         image: shu300/oro-crm4
+        expose:
+             - 9000
+             - 8080
         #command: /bin/bash
         stdin_open: true
         tty: true
@@ -25,22 +27,26 @@ services:
             - "./html/translations:/var/www/html/translations"
             - "./html/src/FM:/var/www/html/src/FM"
             - "./html/src/Resources:/var/www/html/Resources"
-            - "./html/parameters.yml:/var/www/html/config/parameters.yml"
+            - "./parameters.yml:/var/www/html/config/parameters.yml"
             - "./var:/var/www/html/var"
             - "./logs/supervisor:/var/log/supervisor"
-    mysql:
-        restart: always
-        image: mysql:5.7.21
-        environment:
-            - MYSQL_DATABASE=${PROJECT}
-            - MYSQL_USER=${PROJECT}
-            - MYSQL_PASSWORD=${PROJECT}
-            - MYSQL_ROOT_PASSWORD=admin
-            - LANG=C.UTF-8
-        volumes:
-            - "./data:/var/lib/mysql"
-            - "./logs/mysql:/var/log/mysql"
-            - "./docker/mysql/mysql.conf.d:/etc/mysql/mysql.conf.d"
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "udp://nas.home.net:514"
+#    mysql:
+#        restart: always
+#        image: mysql:5.7.21
+#        environment:
+#            - MYSQL_DATABASE=${PROJECT}
+#            - MYSQL_USER=${PROJECT}
+#            - MYSQL_PASSWORD=${PROJECT}
+#            - MYSQL_ROOT_PASSWORD=admin
+#            - LANG=C.UTF-8
+#        volumes:
+#            - "./data:/var/lib/mysql"
+#            - "./logs/mysql:/var/log/mysql"
+#            - "./docker/mysql/mysql.conf.d:/etc/mysql/mysql.conf.d"
 volumes:
     public:
         driver: local-persist
