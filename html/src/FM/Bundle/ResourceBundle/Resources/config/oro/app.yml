@@ -1,2 +1,2 @@
 gos_web_socket:
-    origins:              ['*']
+    origins:              ['%websocket_frontend_host%']
