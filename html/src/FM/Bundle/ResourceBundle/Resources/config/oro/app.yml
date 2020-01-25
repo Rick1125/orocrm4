@@ -1,2 +1,9 @@
 gos_web_socket:
     origins:              ['%websocket_frontend_host%']
+
+doctrine:
+    dbal:
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_bin
