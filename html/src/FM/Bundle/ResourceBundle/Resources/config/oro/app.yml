@@ -1,3 +1,2 @@
 gos_web_socket:
-    server:
-        origin_check: false
+    origins:              ['*']
