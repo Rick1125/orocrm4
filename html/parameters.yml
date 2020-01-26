@@ -1,32 +1,33 @@
 parameters:
-    database_driver: pdo_mysql
-    database_host: mysql
-    database_port: 3306
-    database_name: fmchina
-    database_user: root
-    database_password: admin
-    database_driver_options: { charset: utf8mb4, collate: utf8mb4_bin, row_format: dynamic }
-    mailer_transport: smtp
-    mailer_host: smtp.exmail.qq.com
-    mailer_port: 465
-    mailer_encryption: ssl
-    mailer_user: no-reply@senal.club
-    mailer_password: Senal.club88
-    websocket_bind_address: 0.0.0.0
-    websocket_bind_port: 8080
-    websocket_frontend_host: '*'
-    websocket_frontend_port: 8889
-    websocket_frontend_path: ws
-    websocket_backend_host: '*'
-    websocket_backend_port: 8080
-    websocket_backend_path: ws
-    websocket_backend_transport: tcp
-    websocket_backend_ssl_context_options: {  }
-    web_backend_prefix: ''
-    session_handler: session.handler.pdo
-    secret: ebf162e79086ee889fb45794db266d62
-    installed: '2019-10-27T19:36:49+08:00'
-    assets_version: 999d1458
-    assets_version_strategy: time_hash
-    message_queue_transport: dbal
-    message_queue_transport_config: null
+  database_driver: pdo_mysql
+  database_host: mysql
+  database_port: 3306
+  database_name: fmchina
+  database_user: root
+  database_password: admin
+  database_driver_options:
+    { charset: utf8mb4, collate: utf8mb4_bin, row_format: dynamic }
+  mailer_transport: smtp
+  mailer_host: smtp.exmail.qq.com
+  mailer_port: 465
+  mailer_encryption: ssl
+  mailer_user: no-reply@onerise.tech
+  mailer_password: "Don'tForget8"
+  websocket_bind_address: 0.0.0.0
+  websocket_bind_port: 8080
+  websocket_frontend_host: "*"
+  websocket_frontend_port: 8889
+  websocket_frontend_path: ws
+  websocket_backend_host: "*"
+  websocket_backend_port: 8080
+  websocket_backend_path: ws
+  websocket_backend_transport: tcp
+  websocket_backend_ssl_context_options: {}
+  web_backend_prefix: ""
+  session_handler: session.handler.pdo
+  secret: ebf162e79086ee889fb45794db266d62
+  installed: false
+  assets_version: 999d1458
+  assets_version_strategy: time_hash
+  message_queue_transport: dbal
+  message_queue_transport_config: null
